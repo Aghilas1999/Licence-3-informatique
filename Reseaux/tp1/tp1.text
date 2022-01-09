@@ -1,0 +1,105 @@
+Smail Aghilas 
+
+TP1 Réseaux
+
+
+-------------- .Matériels et Outils Réseaux.
+
+-------------- 1. Physique et liaison de Données.
+
+
+	1. Combien y a-t-il de stations dans cette Salle?
+		 - il y a 18 de stations dans cette Salle.
+		
+	2. Combien de cartes réseaux comportent votre station?
+		 - y a une seule carte réseaux.
+	
+	3. Que signifie l'indicateur lumineux?
+		 - Quand la connection entre la station et le réseau est établie.
+
+    4. Combien de connectecteurs électriques présente une fiche Rj45?
+		 - Il y a un seule connectecteur électrique.
+
+	5. Qu'y a-t-il a l'autre extrémité de cable?
+		 - il y a le routeur.
+		
+	6. La salle contient-elle d'autre Matériel réseau?
+		 - Non, il contient pas.
+
+
+				2. Paramètre Réseaux :
+
+    1. Quelle sont les adresses IP de votre station?
+		 - on a le IPv4 : 139.124.75.88
+		 - Et le IPv6 : fe80::1a03:73ff:fe3d:23ba/64
+
+	2. A quel sous-réseau appartiennent les stations de votre salle?
+
+		 - Le sous-réseau est 139.124.75.x et le masque reseau est 255.255.255.0
+
+    3.	 Combien y a-t-il d'adresses dans ces réseaux ?
+		 -Il y à 255 adresses dans ce réseau est ce reseau y a  certaines réseau
+		    déjà reservés telle que l'adresse de broadcast.
+
+	4. Comment pouvez-vous le savoir ?
+
+		 -Par faire la recherche dans "informations sur la connexion" ou par taper dans 
+		 			le terminal la commande ifconfig.
+
+
+2. Couche Réseaux 
+
+	* Protocole Applicatif SMTP :
+		1 - Rappeler a quoi sert le Protocole Applicatif SMTP.
+			- SMTP est Simple mail Transfer Protocol est un Protocole de 
+				communication utilisé pour transférer les mails, il a un port de numero 25.
+
+		2 - On considère une session compléte smtp.pdf .
+				Expliquer ce qui se passe.
+
+				- Le client veut envoye un mail.
+				- En peut voir la communication entre le client rouge et le serveur bleu.
+				- Le client envoit des Données au serveur (emmeteur, destinataire, message) et de ce dernier retourne des accusé de recepption.
+				- Le client met fin a la connexion et le serveur  une fois que tout les donnée sont envoyé.
+    
+	* Analyse :
+		Rappeler pour quelle raisons vous ne pouvez pas capturer de trafic réseau en salle Tp.
+			- En n'a pas la permission nécessaires pour le faire.
+
+	    Que constatez-vous?
+		    - On peut observer l'équivalent en hexadécimale des commande de cette session SMTP.
+
+    * WIRESHARK :
+		** Déterminer pour chaque paquet les caractéristique de niveau 3 et 4:
+
+			* niveau 3 :
+				version IP : Internet Protocol Version 4
+    			adresse source (en hexadécimal et en notation pointée) : 147.210.33.133 ; (00:06:25:1a:cf:ee)
+    			adresse destination (en hexadécimal et en notation pointée) : 192.168.1.130 ; (00:0d:93:32:aa:2c)
+    			port source : 25
+    			port destination : 41585
+
+
+			* niveau 4 :
+    			version IP : Internet Protocol Version 4
+    			adresse source (en hexadécimal et en notation pointée) : 192.168.1.130 ; (00:0d:93:32:aa:2c)
+    			adresse destination (en hexadécimal et en notation pointée) : 147.210.33.133 ; (00:06:25:1a:cf:ee)
+    			port source : 41585
+    			port destination : 25
+
+		**  A quelle partie de la session complète, cet extrait correspond-t-il ?
+		
+
+3. Outils pour la communication réseaux :
+  Clients 
+     # telnet : 
+		Faire
+ 		$ telnet eu.httpbin.org http
+		Taper ensuite (en appuyant deux fois sur Entrée)
+		GET / HTTP/1.0
+
+		Que constatez-vous ?
+			* La premier commande marche et nous connecte au domaine.
+			* La seconde commande nous affiche dans le terminal du code html.
+
+	 # netcat :		
