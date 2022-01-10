@@ -103,3 +103,32 @@ TP1 Réseaux
 			* La seconde commande nous affiche dans le terminal du code html.
 
 	 # netcat :		
+		Exrire dans le fichier get.txt
+			GET / HTTP/1.0
+		Faire
+			$ nc eu.httpbin.org http <get.txt> tp.html
+		Ouvrez le fichier tp.html. Que constatez-vous?
+
+			* le fichier tp.html a était créer. On aura une page web statique retournant une erreur [400: BAD REQUEST]
+		Réssayer éventuellement avec 
+			$ nc -C eu.httpbin.org http <get.txt> tp.html
+
+		Expliquez. Pouvez dire quel est le nom et la version du logiciel serveur web 
+			utilisé pour cette page web statique? 
+			*  Le serveur utilisé est le serveur Apache de version 2.4.6
+
+		Tester ces commandes sur un site dynamique comme http://www.univ-amu.fr. Que constatez-vous ?
+
+			*  La commande : nc -C eu.httpbin.org http <get.txt> tp.html ne fonctionne pas.
+
+4. Un serveur Simple :
+
+			La commande netcat est très versatile, elle peut également être utilisée en mini-serveur.
+			Faire
+			$ nc -l 1234
+			Dans un autre terminal, faire
+			$ nc localhost 1234
+				Que constatez-vous ?
+
+				* Il ne passe rien.
+				
