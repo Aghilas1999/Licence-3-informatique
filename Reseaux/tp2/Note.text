@@ -12,3 +12,10 @@
 
             Ctrl-C: envoie un SIGINT à netcat.
             Ctrl-D: envoie un EOF sur le stdin de netcat.
+
+
+3. Tester avec le client :
+    1-Que se passe-t-il si vous utilisez deux client en meme temps:
+       En a juste le premier message qui passe.
+
+       
