@@ -15,15 +15,16 @@ public class ClientUDP
 
     try
     {
-      if (args.length==2)
-      {
+      if (args.length==2){
+        
+        
         adr = InetAddress.getByName(args[0]);
         port = Integer.parseInt(args[1]);
-      }
-      else
-      {
+      
+      }else{
+      
         System.out.println("Adresse et/ou port manquant");
-        System.out.println("Veuillez passer l'adresse en premier agrument et le port en second.");
+        System.out.println("Passer l'adresse en premier agrument et le port en second.");
         return;
       }
 
