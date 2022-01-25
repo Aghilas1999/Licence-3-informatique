@@ -1,0 +1,21 @@
+ 1. Client UDP Echo en Java:
+
+    1-Pourquoi le client ne peut-il utiliser le port 1234(comme port source) pendant votre TP?
+        * Le port 1234 est utiliser par le serveur du coup en peut l'untiliser , il est deja pris.
+
+    2-Pourquoi ne définit-on pas explicitement , en général, le port du client?
+        *En a pas besoin de port du client il sert a rien, en a besoin du port de serveur.
+
+
+2. CLient Avancé :
+    1-Quelle est la différence enntre terminer le client par CTRL-C ou CTRL-D ?
+
+            Ctrl-C: envoie un SIGINT à netcat.
+            Ctrl-D: envoie un EOF sur le stdin de netcat.
+
+
+3. Tester avec le client :
+    1-Que se passe-t-il si vous utilisez deux client en meme temps:
+       En a juste le premier message qui passe.
+
+       
