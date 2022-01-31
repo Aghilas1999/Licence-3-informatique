@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="col-xs-12">
+    <h2>Les étudiants</h2>
+    <p>Mise a jour : {{ lastUpdate | date:'y MMMM EEEE d' | uppercase}}</p>
+    <ul class="list-group">
+      <app-students *ngFor = "let student of students" [studentName]="student.name" [studentStatus]="student.status"></app-students>
+    </ul>
+    <button class="btn btn-success"
+            [disabled]="!isAuth"
+            (click)="allPresent()">
+      Tous present
+    </button>
+  </div>
+</div>
+
