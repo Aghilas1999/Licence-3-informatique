@@ -1,41 +1,27 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
-import java.net.InetAddress;
+import java.io.*;
 import java.net.Socket;
-import java.net.UnknownHostException;
 import java.util.Scanner;
 
+public class CLientTCP {
+    public static void main(String[] argv){
+        sendToServer(argv[0], Integer.parseInt(argv[1]));
 
-public class ClientTCP {
-
-     public static void main(String[] args) {
-    
-        
+    }
+    public static void sendToServer(String ip, int port){
         try {
-            String port = args[0];
-            // Create a connection to the server socket on the server application.
-            InetAddress host = InetAddress.getLocalHost();
-            Socket socket = new Socket(host.getHostName(), Integer.valueOf(port));
-            System.out.println("Entre ton text ici !");
-            Scanner console = new Scanner(System.in);
-            PrintWriter out  = new PrintWriter(socket.getOutputStream(), true);
-            BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            String string = " ";
-            while (console.hasNextLine()) {
-                string = console.nextLine();
-                out.println(string);
-                String greeting = in.readLine();
-                System.out.println("Message du serveur :" +greeting);        
+            Scanner scanner = new Scanner(System.in);
+            Socket socket = new Socket(ip,port);
+            String line;
+            while (scanner.hasNextLine()){
+                line = scanner.nextLine();
+                DataOutputStream out = new DataOutputStream(socket.getOutputStream());
+                out.writeUTF(line);
             }
-
-        } catch (UnknownHostException e) {
-            e.printStackTrace();
+            socket.close();
 
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
 
+    }
 }
