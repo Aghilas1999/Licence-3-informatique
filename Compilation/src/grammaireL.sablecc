@@ -1,0 +1,180 @@
+Package sc;
+
+Helpers
+
+lettre = [['a' .. 'z'] + ['A' .. 'Z']];
+chiffre = ['0' .. '9'];
+alpha = [lettre + ['_' + '$']];
+alphanum = [lettre + chiffre];
+
+Tokens
+
+espaces = (' ' | 13 | 10)+;
+commentaire= '#' [[0 .. 0xffff] - [10 + 13]]* (10 | 13 | 10 13);
+parenthese_ouvrante = '(';
+parenthese_fermante = ')';
+virgule = ',';
+ou = '|';
+et = '&';
+divise = '/';
+point_vergule = ';';
+inferieur = '<';
+non = '!';
+fois = '*';
+egal = '=';
+plus = '+';
+moin = '-';
+si = 'si';
+alors = 'alors';
+sinon = 'sinon';
+tantque = 'tantque';
+faire =  'faire';
+ecrire = 'ecrire';
+retour = 'retour';
+nombre = chiffre+;
+entier = 'entier';
+identif = alpha alphanum*;
+accolade_ouvrant = '{';
+accolade_fermant = '}';
+crochet_ouvrant = '[';
+crochet_fermant = ']';
+
+
+Ignored Tokens
+
+espaces, commentaire;
+
+Productions
+
+programme =
+{prog1} parenthese_ouvrante identif virgule nombre parenthese_fermante |
+{prog2} parenthese_ouvrante nombre parenthese_fermante ;
+
+
+// *************** 3.Grammaire des expression arithmétique; ***************
+// 7 . | Le (ou)
+// 6 . & Le (et)
+// 5 . < = (l'inferieur et l'egal)
+// 4 . + - (plus et le moin)
+// 3 . * / ( le fois et la devision)
+// 2 . ! (non)
+// 1 . (exp) nbr,variable,et appel.
+
+exp =  {ou} exp ou exp1 |
+       {exp1} exp1;
+    
+exp1 = {et} exp1 et exp2 |
+       {exp2} exp2;
+
+exp2 = {inf} exp2 inferieur exp3 |
+       {egal} exp2 egal exp3 | 
+       {exp3} exp3;
+
+exp3 = {plus} exp3 plus exp4 |
+       {moin} exp3 moin exp4 |
+       {exp4} exp4;
+
+exp4 = {fois} exp4 fois exp5 |
+       {divise} exp4 divise exp5 |
+       {exp5} exp5;
+
+exp5 = {non} non exp5 |
+       {exp6} exp6;
+
+exp6 = {nombre} nombre |
+       {parenthese} parenthese_ouvrante exp parenthese_fermante ;
+    
+
+listeexp =
+{recursif} exp listeexpbis|
+{final} ;
+
+listeexpbis =
+{recursif} virgule exp listeexpbis |
+{final} ;
+
+apppelfct = identif parenthese_ouvrante listeexp parenthese_fermante;
+
+// ************* 4. La Grammaire des instruction ; ***************
+
+// Instruction affectation:
+
+  instraffect = var egal exp point_vergule;
+
+// Instruction tantque :
+
+  instrtanque = tantque exp faire instrbloc;  
+
+// Instruction si et sinon;
+
+  instrsi = {avecsinon} si exp alors instrbloc instrucsinon |
+            {sanssinon} si exp alors instrbloc;
+
+// Declaration de l'instruction bloc:
+   
+   instrbloc = accolade_ouvrant listeinst accolade_fermant;
+
+// Decalaration de liste d'instruction (listeinst) ;
+   
+   listeinst = {linstrec} instr listeinst |
+               {linstfinal};
+
+// Decalration de l'instruction (instr) ;
+
+   instr = {instraffect} instraffect | {instrbloc} instrbloc |
+           {instrsi} instrsi | {instrtanque} instrtanque |
+           {instrappel} instrappel | {instrretour} instrretour |
+           {instrecriture} instrecriture | {instrvide} instrvide ;
+
+// Declaration L'instruction appel :
+       
+       instrappel = apppelfct point_vergule;
+
+// Declaration de l'instruction retour :
+
+       instrretour = retour exp point_vergule;
+ 
+ // Declaration de L'instruction ecriture :
+
+       instrecriture = ecrire parenthese_ouvrante exp parenthese_fermante point_vergule;
+
+ // Declaration de l'instruction vide :
+
+       instrvide = point_vergule;
+
+
+// ***************** 5. La Déclaration de variable ******************
+
+       var = {vartab} identif crochet_ouvrant exp crochet_fermant |
+             {varsimple} identif ;
+             
+// 1. Déclaration de variable:
+
+       decvar = {decvarentier} entier identif |
+                
+                {decvartableau} entier identif crochet_ouvrant nombre crochet_fermant ;
+
+// 2. Déclaration de liste de variable : 
+
+       listedevar = {decvarldecvar} decvar listedecvarbis | 
+                    {decvar} decvar;
+
+// 3. Déclaration des variables de blocs(bis) :
+
+       listedecvarbis = {decvarldecvar} virgule listedecvarbis | 
+                        {decvar} virgule decvar ;
+
+// 4. Déclaration de liste de fonction :
+
+       listedecfonc = {ldecfoncrec} decfonc listedecfonc |
+                      {ldecfoncfinal} ;
+
+// 5. Decalaration de foction :
+ 
+       decfonc = {decvarinstr} identif listeparam optdecvar instrbloc |
+                 {instr} identif listeparam instrbloc ;
+
+// 6. Declaration de liste de parametre :
+
+       listeparam = {sansparam} parenthese_ouvrante parenthese_fermante | 
+                    {avecparam} parenthese_ouvrante listedecvar parenthese_fermante ;
