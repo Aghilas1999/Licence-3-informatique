@@ -1,5 +1,7 @@
 import {Injectable} from "@angular/core";
 import {Router} from "@angular/router";
+import { Subject } from 'rxjs-compat';
+
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +9,7 @@ import {Router} from "@angular/router";
 export class StudentService{
 
   constructor(private router:Router){}
-  students:any = [
+  private students : any  =  [
     {
       id:1,
       name: 'Henri',
@@ -78,4 +80,11 @@ export class StudentService{
     }
     return student;
   }
+
+  studentsSubject = new Subject<any[]>() ;
+
+
+  emitStudentSubject() {
+    this.studentsSubject.next(this.students.slice());
+    }
 }
