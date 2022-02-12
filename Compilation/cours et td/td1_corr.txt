@@ -1,0 +1,101 @@
+Exercice 1
+
+1)
+
+G1 = < {N, C}, {0,..9}, {N -> NC | C, C -> 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 |8 |9}, N >
+G2 = < {N, C}, {0,..9}, {N -> CN | C, C -> 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 |8 |9}, N >
+
+
+
+2) dérivation gauche de 543 avec G1
+
+N => NC => NCC => CCC => 5CC => 54C => 543
+
+dérivation droite
+
+N => NC => N3 => NC3 => N43 => C43 => 543
+
+ dérivation gauche de 543 avec G2
+
+N => CN => 5N => 5CN => 54N => 54C => 543
+
+dérivation droite
+
+N => CN => CCN => CCC => CC3 => C43 => 543
+
+grammaire simple de liste
+
+L -> eL | e
+
+Exercice 2
+
+G = <{S,L,C},{0..9, :}, R, S >
+R = {
+S -> L | eps 
+L -> L:C | C
+C -> 0|1|2|3|4|5|6|7|8|9
+}
+
+S => L:C => L:C:C => C:C:C =*=>  5:4:3 
+
+S => L => C => 4
+
+
+G'= <{S,C,L},{0..9, :}, R, S >
+
+R = {
+S -> CL | eps
+L -> :CL | eps
+C -> 0|1|2|3|4|5|6|7|8|9
+}
+
+S => eps
+S => CL => C
+S => CL => C:CL => C:C =*=> 5:4
+
+deriv droite
+
+S => CL => C:CL => C:C:CL => C:C:C => C:C:3 => C:4:3 => 5:4:3
+
+deriv gauche
+
+S => CL => 5L => 5:CL ...
+
+Exercice 3
+
+G = <{A, S,L,C},{0..9,(,),:}, R, A >
+R = {
+A -> ( S )
+S -> L | eps 
+L -> L:C | C
+C -> 0|1|2|3|4|5|6|7|8|9
+}
+
+A => (S)=>()
+
+
+Exercice 5
+
+grammaire 1
+E -> E - E | C
+C -> 1 ... 9
+
+problème elle est ambigue
+
+on casse la symétrie :
+
+grammaire 2
+E -> E - C | C
+C -> 1 ... 9
+
+Exercice 6
+
+G1 :
+E -> E + T | E - T | T 
+T -> T * C | T / C | C
+C -> 1...9
+
+Exercice 7
+
+P -> eps | S P
+S -> ( P )
