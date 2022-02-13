@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule ,ReactiveFormsModule} from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,6 +10,7 @@ import { StudentViewComponent } from './student-view/student-view.component';
 import {RouterModule} from "@angular/router";
 import {SingleStudentComponent} from "./single-student/single-student.component";
 import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
+import { EditStudentComponent } from './edit-student/edit-student.component';
 
 
 
@@ -21,7 +22,8 @@ import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
     AuthComponent,
     StudentViewComponent,
     SingleStudentComponent,
-    FourOhFourComponent
+    FourOhFourComponent,
+    EditStudentComponent
   ],
   imports: [
     BrowserModule,

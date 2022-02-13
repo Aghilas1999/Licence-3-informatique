@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-xs-12">
     <h2>Les étudiants</h2>
-    <p>Mise a jour : {{ lastUpdate | date:'y MMMM EEEE d' | uppercase}}</p>
+    <p>Mise a jour : {{ lastUptdate | date:'y MMMM EEEE d' | uppercase}}</p>
     <ul class="list-group">
       <app-students *ngFor="let student of students; let i = index"
                     [studentName]="student.name"

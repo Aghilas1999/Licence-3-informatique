@@ -1,0 +1,12 @@
+<ul class="list-group">
+  <li class="list-group-item" *ngFor="let user of users">
+    <h3>{{ user.firstName }} {{ user.lastName }}</h3>
+      <p>{{ user.email }}</p>
+           <p>Cet étudiant est en {{ user.diploma }}</p>
+             <p *ngIf="user.options && user.options.length > 0">
+                 Il a pris les options suivantes :
+                    <span *ngFor="let option of user.options">{{ option }} - </span>
+            </p>
+    </li>
+              <li routerLinkActive="active"><a routerLink="users">Utilisateurs</a></li>
+ </ul>

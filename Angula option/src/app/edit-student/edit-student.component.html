@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="col-sm-8 col-sm-offset-2">
+    <form (ngSubmit)="onSubmit(formStudent)" #formStudent="ngForm">
+      <div class="form-group">
+        <label for="name">
+            Nom de l'étudiant
+        </label>
+        <input type="text" id="name" class="form-control" name="name" ngModel required>
+      </div>
+             <div class="form-group">
+                   <label for="status">
+                          État de l'étudiant
+                    </label>
+                    <select id="status" class="form-control" name="status" [ngModel]="defaultStatus">
+                      <option value="present">present</option>
+                      <option value="absent">absent</option>
+                     </select>
+              </div>
+              <button class="btn btn-primary" type="submit"
+              [disabled]="formStudent.invalid">Enregistrer</button>
+             </form>
+        </div>
+ </div>
