@@ -1,0 +1,30 @@
+1. Si deux clients se connectent en même temps, 
+    le serveur recevra les messages des deux clients mais n'affichera que ceux du premier.
+     Les messages du second seront "sauvegardé" en mémoire et affiché lorsque le premier client mettra fin a la connexion. Quand le second
+   
+     client sera seul, l'envoi et l'affichage de messages se fera de manière habituelle.
+
+2. -La communication avec Java NIO, ses classes channels et le selector.
+     -Les threads qui permettent d'attribuer un client par thread et de pallier au problème des fonctions "bloquantes".
+
+3.
+
+-Quand le nombre de clients stressant devient important le serveur renvoit des exceptions : connection reset
+-Il n'y a pas de différence de comportement du serveur pour les mêmes nombres de connexion entre les clients Stress1 si
+ l'on ferme la connexion immédiatement ou non
+
+4. newCachedThreadPool() : crée un pool de thread qui crée de nouveaux threads en fonctions des besoins, mais
+   réutilisera les threads construits précédement lorsqu'il seront disponibles
+   
+   newCachedThreadPool(ThreadFactory x) : fait la même chose que newCachedThreadPool() mais utilise égalemment le
+   ThreadFactory passé en argument pour créer de nouveaux threads si nécéssaire.
+
+   oui il existe 2 signatures de Executors.newFixedThreadPool
+   
+   l'une permet de crée un pool de thread qui réutilise un nombre fixe de threads (passé en arf) opérant à partir
+   d'une file d'attente partagée sans limites. l'autre fait la même chose mais utilise égalemment une ThreadFactory
+   passé en argument pour créer de nouveaux threads si besoin.
+
+
+
+- les pools dynamiques plus rapide que les statiques.
