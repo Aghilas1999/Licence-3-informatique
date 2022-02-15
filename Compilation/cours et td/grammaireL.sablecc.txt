@@ -1,0 +1,176 @@
+Package sc;
+
+Helpers
+
+lettre = [['a' .. 'z'] + ['A' .. 'Z']];
+chiffre = ['0' .. '9'];
+alpha = [lettre + ['_' + '$']];
+alphanum = [lettre + chiffre];
+
+Tokens
+
+espaces = (' ' | 13 | 10)+;
+commentaire= '#' [[0 .. 0xffff] - [10 + 13]]* (10 | 13 | 10 13);
+virgule = ',';
+divise = '/';
+point_virgule = ';';
+fois = '*';
+moins = '-';
+parenthese_ouvrante = '(';
+parenthese_fermante = ')';
+crochet_ouvrant = '[';
+crochet_fermant = ']';
+accolade_ouvrante = '{';
+accolade_fermante = '}';
+egal = '=';
+inferieur = '<';
+et = '&';
+ou = '|';
+non = '!';
+plus = '+';
+si = 'si';
+alors = 'alors';
+sinon = 'sinon';
+tantque = 'tantque';
+faire = 'faire';
+entier = 'entier';
+retour = 'retour';
+lire = 'lire';
+ecrire = 'ecrire';
+nombre = chiffre+;
+identif = alpha alphanum*;
+
+Ignored Tokens
+
+espaces, commentaire;
+
+Productions
+
+programme =
+{decvarldecfonc} optdecvar listedecfonc |
+{ldecfonc} listedecfonc;
+
+optdecvar = listedecvar point_virgule;
+
+listedecvar =
+{decvarldecvar} decvar listedecvarbis |
+{decvar} decvar;
+
+listedecvarbis =
+{decvarldecvar} virgule decvar listedecvarbis|
+{decvar} virgule decvar ;
+
+decvar =
+{decvarentier} entier identif |
+{decvartableau} entier identif crochet_ouvrant nombre crochet_fermant ;
+
+listedecfonc =
+{ldecfoncrec} decfonc listedecfonc |
+{ldecfoncfinal} ;
+
+decfonc =
+{decvarinstr} identif listeparam optdecvar instrbloc |
+{instr} identif listeparam instrbloc ;
+
+listeparam =
+{sansparam} parenthese_ouvrante parenthese_fermante |
+{avecparam} parenthese_ouvrante listedecvar parenthese_fermante ;
+
+instr =
+{instraffect} instraffect |
+{instrbloc } instrbloc |
+{instrsi } instrsi |
+{instrtantque } instrtantque |
+{instrappel } instrappel |
+{instrretour } instrretour |
+{instrecriture } instrecriture |
+{instrvide} instrvide ;
+
+instraffect = var egal exp point_virgule ;
+
+instrbloc = accolade_ouvrante listeinst accolade_fermante ;
+
+//listeinst = instr*;
+
+listeinst =
+{linstrec} instr listeinst |
+{linstfinal} ;
+
+instrsi =
+{avecsinon} si exp alors instrbloc instrsinon |
+{sanssinon} si exp alors instrbloc ;
+
+instrsinon = sinon instrbloc ;
+
+instrtantque = tantque exp faire instrbloc ;
+
+instrappel = appelfct point_virgule ;
+
+instrretour = retour exp point_virgule ;
+
+instrecriture = ecrire parenthese_ouvrante exp parenthese_fermante point_virgule ;
+
+instrvide = point_virgule ;
+
+//################################################################################
+// exp (booléennes, arithmétiques) avec implémentation des priorités.
+// ordre croissant de priorités comme suit (le | a la plus petite priorité)=
+// 7. | (ou)
+// 6. & (et)
+// 5. < =
+// 4. + -
+// 3. * /
+// 2. ! (non)
+// 1. (exp) appelfct var[exp]
+//###############################################################################*/
+
+exp =
+{ou} exp ou exp1 |
+{exp1} exp1;
+
+exp1 =
+{et} exp1 et exp2 |
+{exp2} exp2;
+
+exp2 =
+{inf} exp2 inferieur exp3 |
+{egal} exp2 egal exp3 |
+{exp3} exp3;
+
+exp3 =
+{plus} exp3 plus exp4 |
+{moins} exp3 moins exp4 |
+{exp4} exp4 ;
+
+exp4 =
+{fois} exp4 fois exp5 |
+{divise} exp4 divise exp5 |
+{exp5} exp5 ;
+
+exp5 =
+{non} non exp5 |
+{exp6} exp6 ;
+
+exp6 =
+ {nombre} nombre |
+ {appelfct} appelfct |
+ {var} var |
+ {parentheses} parenthese_ouvrante exp parenthese_fermante |
+ {lire} lire parenthese_ouvrante parenthese_fermante ;
+
+// accès à une variable, case d'un tableau ou appel à fonction
+
+var =
+{vartab} identif crochet_ouvrant exp crochet_fermant |
+{varsimple} identif ;
+
+listeexp =
+{recursif} exp listeexpbis|
+{final} ;
+
+listeexpbis =
+{recursif} virgule exp listeexpbis |
+{final} ;
+
+appelfct = identif parenthese_ouvrante listeexp parenthese_fermante ;
+

@@ -5,6 +5,8 @@ import {AuthComponent} from "./auth/auth.component";
 import {SingleStudentComponent} from "./single-student/single-student.component";
 import {FourOhFourComponent} from "./four-oh-four/four-oh-four.component";
 import {AuthGuard} from "./services/auth-guard.service";
+import { EditStudentComponent } from './edit-student/edit-student.component';
+import { UserListComponent } from './user-list/user-list.component';
 
 const routes: Routes = [
   { path: '', pathMatch:'full', redirectTo: 'students' },
@@ -12,7 +14,10 @@ const routes: Routes = [
   { path: 'auth', component: AuthComponent },
   { path: 'students/:id', canActivate: [AuthGuard], component: SingleStudentComponent },
   { path: 'not-found', component: FourOhFourComponent },
-  { path: '**', redirectTo: 'not-found' }
+  { path: '**', redirectTo: 'not-found' },
+  { path: 'edit', canActivate: [AuthGuard], component: EditStudentComponent },
+  { path: 'users', component: UserListComponent },
+
 ];
 
 @NgModule({

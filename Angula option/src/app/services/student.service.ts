@@ -1,13 +1,18 @@
 import {Injectable} from "@angular/core";
 import {Router} from "@angular/router";
+import { Subject } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class StudentService{
 
+  studentsSubject = new Subject<any[]>() ;
+
+
   constructor(private router:Router){}
-  students:any = [
+  private students =  [
     {
       id:1,
       name: 'Henri',
@@ -46,24 +51,26 @@ export class StudentService{
   ]
 
   switchOnAll(){
+    this.emitStudentSubject();
     for(let student of this.students){
       student.status = 'present';
     }
   }
 
-  switchOfAll(){
+  switchOffAll(){
+    this.emitStudentSubject();
     for(let student of this.students){
       student.status = 'absent';
     }
   }
 
-  switchOneOn(i: number)
-  {
+  switchOneOn(i: number){
+    this.emitStudentSubject();
     this.students[i].status='present';
   }
 
-  switchOneOff(i: number)
-  {
+  switchOneOff(i: number){
+    this.emitStudentSubject();
     this.students[i].status='absent';
   }
 
@@ -78,4 +85,20 @@ export class StudentService{
     }
     return student;
   }
-}
+    emitStudentSubject() {
+     this.studentsSubject.next(this.students.slice());
+     }
+
+     addStudent(name: string, status: string) {
+      const studentObject = {
+          id: 0,
+          name: "",
+          status: ""
+      };
+      studentObject.name = name;
+      studentObject.status = status;
+      studentObject.id = this.students[(this.students.length - 1)].id + 1;
+      this.students.push(studentObject);
+      this.emitStudentSubject();
+  }
+    }
