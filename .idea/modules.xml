@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Compilation/Compilation.iml" filepath="$PROJECT_DIR$/Compilation/Compilation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Impacte/Impacte.iml" filepath="$PROJECT_DIR$/Impacte/Impacte.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Licence3.iml" filepath="$PROJECT_DIR$/.idea/Licence3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Reseaux/Reseaux.iml" filepath="$PROJECT_DIR$/Reseaux/Reseaux.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Reseaux/tp4/tp4.iml" filepath="$PROJECT_DIR$/Reseaux/tp4/tp4.iml" />
+    </modules>
+  </component>
+</project>

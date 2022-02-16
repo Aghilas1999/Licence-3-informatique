@@ -2,16 +2,14 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.InetAddress;
 import java.net.Socket;
-import java.net.UnknownHostException;
-import java.util.Scanner;
 
-public class Client {
+public class client1 {
 
     public Socket socket;
 
     public int i;
 
-    public Client(int serverPort) throws IOException {
+    public Client1(int serverPort) throws IOException {
 
         this.socket = new Socket(InetAddress.getLocalHost(),serverPort);
     }

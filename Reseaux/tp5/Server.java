@@ -1,54 +1,30 @@
-import java.net.*;
-import java.util.concurrent.*;
-import java.util.logging.Handler;
-import java.io.*;
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
+import java.io.IOError;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.ServerSocket;
+import java.net.Socket;
 
 public class Server {
-
-    // Demmarrage et delégation des connexions entrantes.
-    public void demarrer(int port) {
-        ServerSocket ssocket; // socket d'ecoute utilisée par le seveur.
-        Socket csocket;
-
-        System.out.print("Lancement du serveur sur le port " +port);
-        try 
-          {
-              ssocket = new ServerSocket(port);
-              ssocket.setReuseAddress(true); /* rend le port réutilisable rapidement */
-              while (true)
-              {
-                  csocket = ssocket.accept();
-                  Handler ch = new Handler(csocket);
-                  Thread thread = new Thread(ch);
-                  thread.start(); 
-              }
-          } catch (IOException ex)
-          {
-              System.out.println("Arret anormal de serveur." + ex);
-              return;
-          }           
+    public static void main(String[] args) throws IOException {
+            ServerSocket s = new ServerSocket(1234);
+            Socket c = s.accept();
+            PrintWriter out = new PrintWriter(c.getOutputStream(),true);
+            BufferedReader in = new BufferedReader(new InputStreamReader(c.getInputStream()));
+            int x = 0;
+            String y;
+            while ((y = in.readLine()) != null) {
+                    if (y == null) {
+                        c.close();
+                        s.close();
+                        break;
+                    }
+                    System.out.println(y);
+                    out.println(y);
+                    x++;
+            }        
+            System.out.println("le nombre des paquet recu est : " + x);
     }
-    
-    public static void main(String[] args) {
-        int args = args.length;
-        Server serveur;
-        // Traitement des arguments
-
-        if (args == 1 )
-        {
-            try{
-                serveur = new Server();
-                serveur.demarrer(Integer.parseInt(args[0]));
-            } catch (Exception e)
-            {
-                e.printStackTrace();
-            }
-        }else
-        {
-            System.out.println("Usage : java server port");
-        }
-        return;
-    }
-
-    
 }

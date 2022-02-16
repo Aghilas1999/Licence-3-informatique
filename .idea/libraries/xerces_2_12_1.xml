@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="xerces-2_12_1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/Compilation/xerces-2_12_1/resolver.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Compilation/xerces-2_12_1/xml-apis.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Compilation/xerces-2_12_1/serializer.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Compilation/xerces-2_12_1/xercesImpl.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
