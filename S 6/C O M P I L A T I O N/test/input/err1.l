@@ -1,4 +1,0 @@
-main()
-{
-ecrire(var1);
-}
