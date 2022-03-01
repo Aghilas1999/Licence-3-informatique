@@ -10,6 +10,7 @@ public class ClientUDP
 {
   public static void main(String[] args)
   {
+    // UN peut test pour voir
     InetAddress adr;
     int port;
 
