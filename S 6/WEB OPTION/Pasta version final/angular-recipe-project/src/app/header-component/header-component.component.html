@@ -1,0 +1,33 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/">Livre de recettes</a>
+    <button class="navbar-toggler" type="button" (click)="collapsed = !collapsed" data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" [class.collapse]="collapsed" (window:resize)="collapsed = true"
+      id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="/recipes">Recettes</a>
+        </li>
+
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="/shopping-list">Liste de courses</a>
+        </li>
+        <ul ngbDropdown class="dropdown">
+          <li class="nav-link" ngbDropdownToggle id="dropdownMenuButton1" style="cursor:pointer;" aria-expanded="false">
+            Manage
+          </li>
+          <ul ngbDropdownMenu aria-labelledby="dropdownMenuButton1" style="cursor:pointer;">
+            <li><a ngbDropdownItem>sauvegarder</a></li>
+            <li><a ngbDropdownItem>Supprimer</a></li>
+
+          </ul>
+        </ul>
+      </ul>
+
+    </div>
+  </div>
+</nav>

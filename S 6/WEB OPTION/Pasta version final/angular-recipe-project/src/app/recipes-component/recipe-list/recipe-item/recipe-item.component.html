@@ -1,0 +1,14 @@
+<a class="list-group-item clearfix border" style="max-width:380px; cursor:pointer; border-radius: 20px; margin: 10px;"
+  [routerLink]="[index]" routerLinkActive="active">
+  <div class="float-start">
+    <h4 class="list-group-item-heading">
+      {{recipe.nom}}
+    </h4>
+    <p class="list-group-item-text">
+      {{recipe.description}}</p>
+  </div>
+  <span class="float-end">
+    <img [src]="recipe.imagePath" alt="{{recipe.nom}}" class="img-fluid"
+      style="height: 80px; width: 80px; border-radius: 20px;">
+  </span>
+</a>

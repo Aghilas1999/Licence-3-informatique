@@ -1,0 +1,79 @@
+<div class="row">
+  <div class="col-xs-12">
+    <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="name">Nom</label>
+            <input type="text" class="form-control" id="name" placeholder="Name" formControlName="name" name="name"
+              required>
+
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="imagePath">URL de l'image</label>
+            <input type="text" class="form-control" id="imagePath" formControlName="imagePath" #imagePath>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <img [src]="imagePath.value" class="img-responsive" style="border-radius: 14px; max-width: 300px;">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12" style="padding-bottom: 10px;">
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea class="form-control" id="description" formControlName="description" rows="2"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12" formArrayName="ingredients">
+          <div class="row" *ngFor="let ingredientCtrl of controls; let i = index" [formGroupName]="i">
+
+            <div class="col-xs-8" style="width: 30%; padding-bottom: 10px;">
+              <input type="text" class="form-control" formControlName="name">
+            </div>
+            <div class="col-xs-2" style="width: 20%">
+              <input type="number" class="form-control" formControlName="amount">
+            </div>
+            <div class="col-xs-2" style="width: 20%">
+              <input type="text" min="0" step="any" class="form-control" formControlName="uom">
+            </div>
+            <div class="col-xs-2" style="width: 5%">
+              <button type="button" class="btn-sm btn-danger" (click)="onSuppIngredient(i)">X</button>
+            </div>
+
+          </div>
+
+          <div class="row">
+            <div class="col-xs-12">
+              <button class="btn btn-success" type="button" (click)="onAjoutIngredient()">Ajouter des ingrédients</button>
+            </div>
+          </div>
+          <hr>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12" style="padding-bottom: 10px;">
+          <div class="form-group">
+            <label style="text-decoration: underline;" for="description">Instructions de préparation et de cuisson</label>
+            <textarea class="form-control" id="instructions" formControlName="instructions" rows="4"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12" style="text-align: left;">
+          <button type="submit" class="btn btn-success" [disabled]="!recipeForm.valid">Enregistrer la recette</button>
+          <button type="button" class="btn btn-danger" (click)="onAnnul()">Annuler</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

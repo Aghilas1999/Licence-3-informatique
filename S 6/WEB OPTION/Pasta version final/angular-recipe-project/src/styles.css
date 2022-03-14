@@ -1,0 +1,24 @@
+@import "../node_modules/bootstrap/dist/css/bootstrap.css";
+
+body {
+  background-color: bisque;
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.btn {
+  margin: 10px;
+}
+.nav-item {
+  margin: 0 10px;
+}
+img {
+  border-radius: 20px;
+  margin-top: 20px;
+}
+.btn {
+  border-radius: 20px;
+  padding: 10px;
+}
