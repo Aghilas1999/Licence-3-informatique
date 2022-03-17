@@ -1,0 +1,44 @@
+<programme type="SaProg">
+ <fonctions type="SaLDec">
+  <tete type="SaDecFonc" nom="f">
+   <parametres type="SaLDec">
+    <tete type="SaDecVar" nom="a"/>
+    <queue type="SaLDec">
+     <tete type="SaDecVar" nom="b"/>
+    </queue>
+   </parametres>
+   <corps type="SaInstBloc">
+    <val type="SaLInst">
+     <tete type="SaInstEcriture">
+      <arg type="SaExpVar">
+       <var type="SaVarSimple" nom="a"/>
+      </arg>
+     </tete>
+     <queue type="SaLInst">
+      <tete type="SaInstEcriture">
+       <arg type="SaExpVar">
+        <var type="SaVarSimple" nom="b"/>
+       </arg>
+      </tete>
+     </queue>
+    </val>
+   </corps>
+  </tete>
+  <queue type="SaLDec">
+   <tete type="SaDecFonc" nom="main">
+    <corps type="SaInstBloc">
+     <val type="SaLInst">
+      <tete type="SaAppel" nom="f">
+       <arguments type="SaLExp">
+        <tete type="SaExpInt" val="1"/>
+        <queue type="SaLExp">
+         <tete type="SaExpInt" val="456"/>
+        </queue>
+       </arguments>
+      </tete>
+     </val>
+    </corps>
+   </tete>
+  </queue>
+ </fonctions>
+</programme>

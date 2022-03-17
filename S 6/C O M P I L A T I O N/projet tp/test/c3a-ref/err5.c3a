@@ -1,0 +1,7 @@
+f	fbegin	#entree fonction
+	write 1	
+	fend
+main	fbegin	#entree fonction
+	t0 = call f
+	f = t0
+	fend

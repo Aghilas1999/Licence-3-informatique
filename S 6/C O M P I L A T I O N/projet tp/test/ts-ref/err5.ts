@@ -1,0 +1,6 @@
+TABLE GLOBALE
+f	FCT	0
+main	FCT	0
+TABLE LOCALE : f
+TABLE LOCALE : main
+f	VAR  	1	0

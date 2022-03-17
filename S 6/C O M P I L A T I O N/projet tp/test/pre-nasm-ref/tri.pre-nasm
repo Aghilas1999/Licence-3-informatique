@@ -1,0 +1,214 @@
+%include	'io.asm'
+
+section	.bss
+sinput :	resb	255	;reserve a 255 byte space in memory for the users input string
+tab :	resd	160	;variable globale
+
+section	.text
+global _start
+_start:
+	sub	esp,	4	;allocation mémoire pour la valeur de retour
+	call	main	;
+	pop	r0	;récupération de la valeur de retour
+	mov	ebx,	0	; valeur de retour du programme
+	mov	eax,	1	; code de sortie
+	int 0x80	;
+initialiser :	push	ebp	;sauvegarde la valeur de ebp
+	mov	ebp,	esp	;nouvelle valeur de ebp
+	push	eax	;sauvegarde de eax
+	push	ebx	;sauvegarde de ebx
+	push	ecx	;sauvegarde de ecx
+	push	edx	;sauvegarde de edx
+	sub	esp,	0	;allocation des variables locales
+	mov	r22,	0	;
+	imul	r22,	4	;
+	mov	dword [tab+r22],	8	;Affect
+	mov	r23,	1	;
+	imul	r23,	4	;
+	mov	dword [tab+r23],	6	;Affect
+	mov	r24,	2	;
+	imul	r24,	4	;
+	mov	dword [tab+r24],	9	;Affect
+	mov	r25,	3	;
+	imul	r25,	4	;
+	mov	dword [tab+r25],	9	;Affect
+	mov	r26,	4	;
+	imul	r26,	4	;
+	mov	dword [tab+r26],	4	;Affect
+	mov	r27,	5	;
+	imul	r27,	4	;
+	mov	dword [tab+r27],	2	;Affect
+	mov	r28,	6	;
+	imul	r28,	4	;
+	mov	dword [tab+r28],	3	;Affect
+	mov	r29,	7	;
+	imul	r29,	4	;
+	mov	dword [tab+r29],	1	;Affect
+	mov	r30,	8	;
+	imul	r30,	4	;
+	mov	dword [tab+r30],	4	;Affect
+	mov	r31,	9	;
+	imul	r31,	4	;
+	mov	dword [tab+r31],	5	;Affect
+	add	esp,	0	;désallocation des variables locales
+	pop	edx	;restaure edx
+	pop	ecx	;restaure ecx
+	pop	ebx	;restaure ebx
+	pop	eax	;restaure eax
+	pop	ebp	;restaure la valeur de ebp
+	ret	;
+afficher :	push	ebp	;sauvegarde la valeur de ebp
+	mov	ebp,	esp	;nouvelle valeur de ebp
+	push	eax	;sauvegarde de eax
+	push	ebx	;sauvegarde de ebx
+	push	ecx	;sauvegarde de ecx
+	push	edx	;sauvegarde de edx
+	sub	esp,	16	;allocation des variables locales
+	mov	dword [ebp-4],	0	;Affect
+l0 :	mov	r1,	1	;Affect
+	mov	r40,	dword [ebp-4]	;JumpIfLess 1
+	cmp	r40,	dword [ebp+12]	;on passe par un registre temporaire
+	jl	l2	;JumpIfLess 2
+	mov	r1,	0	;Affect
+l2 :	cmp	r1,	0	;JumpIfEqual 1
+	je	l1	;JumpIfEqual 2
+	mov	r42,	dword [ebp-4]	;
+	imul	r42,	4	;
+	mov	eax,	dword [tab+r42]	;Write 1
+	call	iprintLF	;Write 2
+	mov	r2,	dword [ebp-4]	;
+	add	r2,	1	;
+	mov	dword [ebp-4],	r2	;Affect
+	jmp	l0	;Jump
+l1 :	mov	eax,	0	;Write 1
+	call	iprintLF	;Write 2
+	add	esp,	16	;désallocation des variables locales
+	pop	edx	;restaure edx
+	pop	ecx	;restaure ecx
+	pop	ebx	;restaure ebx
+	pop	eax	;restaure eax
+	pop	ebp	;restaure la valeur de ebp
+	ret	;
+echanger :	push	ebp	;sauvegarde la valeur de ebp
+	mov	ebp,	esp	;nouvelle valeur de ebp
+	push	eax	;sauvegarde de eax
+	push	ebx	;sauvegarde de ebx
+	push	ecx	;sauvegarde de ecx
+	push	edx	;sauvegarde de edx
+	sub	esp,	16	;allocation des variables locales
+	mov	r52,	dword [ebp+12]	;
+	imul	r52,	4	;
+	mov	r53,	dword [tab+r52]	;Affect
+	mov	dword [ebp-4],	r53	;on passe par un registre temporaire
+	mov	r54,	dword [ebp+16]	;
+	imul	r54,	4	;
+	mov	r55,	dword [ebp+12]	;
+	imul	r55,	4	;
+	mov	r56,	dword [tab+r54]	;Affect
+	mov	dword [tab+r55],	r56	;on passe par un registre temporaire
+	mov	r57,	dword [ebp+16]	;
+	imul	r57,	4	;
+	mov	r58,	dword [ebp-4]	;Affect
+	mov	dword [tab+r57],	r58	;on passe par un registre temporaire
+	add	esp,	16	;désallocation des variables locales
+	pop	edx	;restaure edx
+	pop	ecx	;restaure ecx
+	pop	ebx	;restaure ebx
+	pop	eax	;restaure eax
+	pop	ebp	;restaure la valeur de ebp
+	ret	;
+trier :	push	ebp	;sauvegarde la valeur de ebp
+	mov	ebp,	esp	;nouvelle valeur de ebp
+	push	eax	;sauvegarde de eax
+	push	ebx	;sauvegarde de ebx
+	push	ecx	;sauvegarde de ecx
+	push	edx	;sauvegarde de edx
+	sub	esp,	48	;allocation des variables locales
+	mov	r67,	dword [ebp+12]	;Affect
+	mov	dword [ebp-36],	r67	;on passe par un registre temporaire
+	mov	dword [ebp-4],	1	;Affect
+l3 :	mov	r3,	1	;Affect
+	cmp	dword [ebp-4],	1	;JumpIfEqual 1
+	je	l5	;JumpIfEqual 2
+	mov	r3,	0	;Affect
+l5 :	cmp	r3,	0	;JumpIfEqual 1
+	je	l4	;JumpIfEqual 2
+	mov	dword [ebp-4],	0	;Affect
+	mov	dword [ebp-20],	0	;Affect
+l6 :	mov	r5,	dword [ebp-36]	;
+	sub	r5,	1	;
+	mov	r4,	1	;Affect
+	cmp	dword [ebp-20],	r5	;JumpIfLess 1
+	jl	l8	;JumpIfLess 2
+	mov	r4,	0	;Affect
+l8 :	cmp	r4,	0	;JumpIfEqual 1
+	je	l7	;JumpIfEqual 2
+	mov	r7,	dword [ebp-20]	;
+	add	r7,	1	;
+	mov	r6,	1	;Affect
+	mov	r68,	r7	;
+	imul	r68,	4	;
+	mov	r69,	dword [ebp-20]	;
+	imul	r69,	4	;
+	mov	r70,	dword [tab+r68]	;JumpIfLess 1
+	cmp	r70,	dword [tab+r69]	;on passe par un registre temporaire
+	jl	l11	;JumpIfLess 2
+	mov	r6,	0	;Affect
+l11 :	cmp	r6,	0	;JumpIfEqual 1
+	je	l10	;JumpIfEqual 2
+	push	dword [ebp-20]	;Param
+	mov	r9,	dword [ebp-20]	;
+	add	r9,	1	;
+	push	r9	;Param
+	sub	esp,	4	;allocation mémoire pour la valeur de retour
+	call	echanger	;
+	pop	r8	;récupération de la valeur de retour
+	add	esp,	8	;désallocation des arguments
+	mov	dword [ebp-4],	1	;Affect
+l10 :	mov	r10,	dword [ebp-20]	;
+	add	r10,	1	;
+	mov	dword [ebp-20],	r10	;Affect
+	jmp	l6	;Jump
+l7 :	mov	r11,	dword [ebp-36]	;
+	sub	r11,	1	;
+	mov	dword [ebp-36],	r11	;Affect
+	jmp	l3	;Jump
+l4 :	add	esp,	48	;désallocation des variables locales
+	pop	edx	;restaure edx
+	pop	ecx	;restaure ecx
+	pop	ebx	;restaure ebx
+	pop	eax	;restaure eax
+	pop	ebp	;restaure la valeur de ebp
+	ret	;
+main :	push	ebp	;sauvegarde la valeur de ebp
+	mov	ebp,	esp	;nouvelle valeur de ebp
+	push	eax	;sauvegarde de eax
+	push	ebx	;sauvegarde de ebx
+	push	ecx	;sauvegarde de ecx
+	push	edx	;sauvegarde de edx
+	sub	esp,	0	;allocation des variables locales
+	sub	esp,	4	;allocation mémoire pour la valeur de retour
+	call	initialiser	;
+	pop	r12	;récupération de la valeur de retour
+	push	10	;Param
+	sub	esp,	4	;allocation mémoire pour la valeur de retour
+	call	afficher	;
+	pop	r13	;récupération de la valeur de retour
+	add	esp,	4	;désallocation des arguments
+	push	10	;Param
+	sub	esp,	4	;allocation mémoire pour la valeur de retour
+	call	trier	;
+	pop	r14	;récupération de la valeur de retour
+	add	esp,	4	;désallocation des arguments
+	push	10	;Param
+	sub	esp,	4	;allocation mémoire pour la valeur de retour
+	call	afficher	;
+	pop	r15	;récupération de la valeur de retour
+	add	esp,	4	;désallocation des arguments
+	add	esp,	0	;désallocation des variables locales
+	pop	edx	;restaure edx
+	pop	ecx	;restaure ecx
+	pop	ebx	;restaure ebx
+	pop	eax	;restaure eax
+	pop	ebp	;restaure la valeur de ebp
+	ret	;

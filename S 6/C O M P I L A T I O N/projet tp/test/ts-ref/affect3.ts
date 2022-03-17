@@ -1,0 +1,7 @@
+TABLE GLOBALE
+f	FCT	1
+main	FCT	0
+TABLE LOCALE : f
+a	PARAM	4	0
+TABLE LOCALE : main
+a	VAR  	4	0

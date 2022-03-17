@@ -1,0 +1,380 @@
+<programme type="SaProg">
+ <variables type="SaLDec">
+  <tete type="SaDecTab" nom="tab" taille="10">
+  </tete>
+ </variables>
+ <fonctions type="SaLDec">
+  <tete type="SaDecFonc" nom="initialiser">
+   <corps type="SaInstBloc">
+    <val type="SaLInst">
+     <tete type="SaInstAffect">
+      <lhs type="SaVarIndicee" nom="tab">
+       <indice type="SaExpInt" val="0"/>
+      </lhs>
+      <rhs type="SaExpInt" val="8"/>
+     </tete>
+     <queue type="SaLInst">
+      <tete type="SaInstAffect">
+       <lhs type="SaVarIndicee" nom="tab">
+        <indice type="SaExpInt" val="1"/>
+       </lhs>
+       <rhs type="SaExpInt" val="6"/>
+      </tete>
+      <queue type="SaLInst">
+       <tete type="SaInstAffect">
+        <lhs type="SaVarIndicee" nom="tab">
+         <indice type="SaExpInt" val="2"/>
+        </lhs>
+        <rhs type="SaExpInt" val="9"/>
+       </tete>
+       <queue type="SaLInst">
+        <tete type="SaInstAffect">
+         <lhs type="SaVarIndicee" nom="tab">
+          <indice type="SaExpInt" val="3"/>
+         </lhs>
+         <rhs type="SaExpInt" val="9"/>
+        </tete>
+        <queue type="SaLInst">
+         <tete type="SaInstAffect">
+          <lhs type="SaVarIndicee" nom="tab">
+           <indice type="SaExpInt" val="4"/>
+          </lhs>
+          <rhs type="SaExpInt" val="4"/>
+         </tete>
+         <queue type="SaLInst">
+          <tete type="SaInstAffect">
+           <lhs type="SaVarIndicee" nom="tab">
+            <indice type="SaExpInt" val="5"/>
+           </lhs>
+           <rhs type="SaExpInt" val="2"/>
+          </tete>
+          <queue type="SaLInst">
+           <tete type="SaInstAffect">
+            <lhs type="SaVarIndicee" nom="tab">
+             <indice type="SaExpInt" val="6"/>
+            </lhs>
+            <rhs type="SaExpInt" val="3"/>
+           </tete>
+           <queue type="SaLInst">
+            <tete type="SaInstAffect">
+             <lhs type="SaVarIndicee" nom="tab">
+              <indice type="SaExpInt" val="7"/>
+             </lhs>
+             <rhs type="SaExpInt" val="1"/>
+            </tete>
+            <queue type="SaLInst">
+             <tete type="SaInstAffect">
+              <lhs type="SaVarIndicee" nom="tab">
+               <indice type="SaExpInt" val="8"/>
+              </lhs>
+              <rhs type="SaExpInt" val="4"/>
+             </tete>
+             <queue type="SaLInst">
+              <tete type="SaInstAffect">
+               <lhs type="SaVarIndicee" nom="tab">
+                <indice type="SaExpInt" val="9"/>
+               </lhs>
+               <rhs type="SaExpInt" val="5"/>
+              </tete>
+             </queue>
+            </queue>
+           </queue>
+          </queue>
+         </queue>
+        </queue>
+       </queue>
+      </queue>
+     </queue>
+    </val>
+   </corps>
+  </tete>
+  <queue type="SaLDec">
+   <tete type="SaDecFonc" nom="afficher">
+    <parametres type="SaLDec">
+     <tete type="SaDecVar" nom="n"/>
+    </parametres>
+    <variables type="SaLDec">
+     <tete type="SaDecVar" nom="i"/>
+    </variables>
+    <corps type="SaInstBloc">
+     <val type="SaLInst">
+      <tete type="SaInstAffect">
+       <lhs type="SaVarSimple" nom="i"/>
+       <rhs type="SaExpInt" val="0"/>
+      </tete>
+      <queue type="SaLInst">
+       <tete type="SaInstTantQue">
+        <test type="SaExpInf">
+         <op1 type="SaExpVar">
+          <var type="SaVarSimple" nom="i"/>
+         </op1>
+         <op2 type="SaExpVar">
+          <var type="SaVarSimple" nom="n"/>
+         </op2>
+        </test>
+        <faire type="SaInstBloc">
+         <val type="SaLInst">
+          <tete type="SaInstEcriture">
+           <arg type="SaExpVar">
+            <var type="SaVarIndicee" nom="tab">
+             <indice type="SaExpVar">
+              <var type="SaVarSimple" nom="i"/>
+             </indice>
+            </var>
+           </arg>
+          </tete>
+          <queue type="SaLInst">
+           <tete type="SaInstAffect">
+            <lhs type="SaVarSimple" nom="i"/>
+            <rhs type="SaExpAdd">
+             <op1 type="SaExpVar">
+              <var type="SaVarSimple" nom="i"/>
+             </op1>
+             <op2 type="SaExpInt" val="1"/>
+            </rhs>
+           </tete>
+          </queue>
+         </val>
+        </faire>
+       </tete>
+       <queue type="SaLInst">
+        <tete type="SaInstEcriture">
+         <arg type="SaExpInt" val="0"/>
+        </tete>
+       </queue>
+      </queue>
+     </val>
+    </corps>
+   </tete>
+   <queue type="SaLDec">
+    <tete type="SaDecFonc" nom="echanger">
+     <parametres type="SaLDec">
+      <tete type="SaDecVar" nom="i"/>
+      <queue type="SaLDec">
+       <tete type="SaDecVar" nom="j"/>
+      </queue>
+     </parametres>
+     <variables type="SaLDec">
+      <tete type="SaDecVar" nom="temp"/>
+     </variables>
+     <corps type="SaInstBloc">
+      <val type="SaLInst">
+       <tete type="SaInstAffect">
+        <lhs type="SaVarSimple" nom="temp"/>
+        <rhs type="SaExpVar">
+         <var type="SaVarIndicee" nom="tab">
+          <indice type="SaExpVar">
+           <var type="SaVarSimple" nom="j"/>
+          </indice>
+         </var>
+        </rhs>
+       </tete>
+       <queue type="SaLInst">
+        <tete type="SaInstAffect">
+         <lhs type="SaVarIndicee" nom="tab">
+          <indice type="SaExpVar">
+           <var type="SaVarSimple" nom="j"/>
+          </indice>
+         </lhs>
+         <rhs type="SaExpVar">
+          <var type="SaVarIndicee" nom="tab">
+           <indice type="SaExpVar">
+            <var type="SaVarSimple" nom="i"/>
+           </indice>
+          </var>
+         </rhs>
+        </tete>
+        <queue type="SaLInst">
+         <tete type="SaInstAffect">
+          <lhs type="SaVarIndicee" nom="tab">
+           <indice type="SaExpVar">
+            <var type="SaVarSimple" nom="i"/>
+           </indice>
+          </lhs>
+          <rhs type="SaExpVar">
+           <var type="SaVarSimple" nom="temp"/>
+          </rhs>
+         </tete>
+        </queue>
+       </queue>
+      </val>
+     </corps>
+    </tete>
+    <queue type="SaLDec">
+     <tete type="SaDecFonc" nom="trier">
+      <parametres type="SaLDec">
+       <tete type="SaDecVar" nom="n"/>
+      </parametres>
+      <variables type="SaLDec">
+       <tete type="SaDecVar" nom="echange"/>
+       <queue type="SaLDec">
+        <tete type="SaDecVar" nom="j"/>
+        <queue type="SaLDec">
+         <tete type="SaDecVar" nom="m"/>
+        </queue>
+       </queue>
+      </variables>
+      <corps type="SaInstBloc">
+       <val type="SaLInst">
+        <tete type="SaInstAffect">
+         <lhs type="SaVarSimple" nom="m"/>
+         <rhs type="SaExpVar">
+          <var type="SaVarSimple" nom="n"/>
+         </rhs>
+        </tete>
+        <queue type="SaLInst">
+         <tete type="SaInstAffect">
+          <lhs type="SaVarSimple" nom="echange"/>
+          <rhs type="SaExpInt" val="1"/>
+         </tete>
+         <queue type="SaLInst">
+          <tete type="SaInstTantQue">
+           <test type="SaExpEqual">
+            <op1 type="SaExpVar">
+             <var type="SaVarSimple" nom="echange"/>
+            </op1>
+            <op2 type="SaExpInt" val="1"/>
+           </test>
+           <faire type="SaInstBloc">
+            <val type="SaLInst">
+             <tete type="SaInstAffect">
+              <lhs type="SaVarSimple" nom="echange"/>
+              <rhs type="SaExpInt" val="0"/>
+             </tete>
+             <queue type="SaLInst">
+              <tete type="SaInstAffect">
+               <lhs type="SaVarSimple" nom="j"/>
+               <rhs type="SaExpInt" val="0"/>
+              </tete>
+              <queue type="SaLInst">
+               <tete type="SaInstTantQue">
+                <test type="SaExpInf">
+                 <op1 type="SaExpVar">
+                  <var type="SaVarSimple" nom="j"/>
+                 </op1>
+                 <op2 type="SaExpSub">
+                  <op1 type="SaExpVar">
+                   <var type="SaVarSimple" nom="m"/>
+                  </op1>
+                  <op2 type="SaExpInt" val="1"/>
+                 </op2>
+                </test>
+                <faire type="SaInstBloc">
+                 <val type="SaLInst">
+                  <tete type="SaInstSi">
+                   <test type="SaExpInf">
+                    <op1 type="SaExpVar">
+                     <var type="SaVarIndicee" nom="tab">
+                      <indice type="SaExpAdd">
+                       <op1 type="SaExpVar">
+                        <var type="SaVarSimple" nom="j"/>
+                       </op1>
+                       <op2 type="SaExpInt" val="1"/>
+                      </indice>
+                     </var>
+                    </op1>
+                    <op2 type="SaExpVar">
+                     <var type="SaVarIndicee" nom="tab">
+                      <indice type="SaExpVar">
+                       <var type="SaVarSimple" nom="j"/>
+                      </indice>
+                     </var>
+                    </op2>
+                   </test>
+                   <alors type="SaInstBloc">
+                    <val type="SaLInst">
+                     <tete type="SaAppel" nom="echanger">
+                      <arguments type="SaLExp">
+                       <tete type="SaExpVar">
+                        <var type="SaVarSimple" nom="j"/>
+                       </tete>
+                       <queue type="SaLExp">
+                        <tete type="SaExpAdd">
+                         <op1 type="SaExpVar">
+                          <var type="SaVarSimple" nom="j"/>
+                         </op1>
+                         <op2 type="SaExpInt" val="1"/>
+                        </tete>
+                       </queue>
+                      </arguments>
+                     </tete>
+                     <queue type="SaLInst">
+                      <tete type="SaInstAffect">
+                       <lhs type="SaVarSimple" nom="echange"/>
+                       <rhs type="SaExpInt" val="1"/>
+                      </tete>
+                     </queue>
+                    </val>
+                   </alors>
+                  </tete>
+                  <queue type="SaLInst">
+                   <tete type="SaInstAffect">
+                    <lhs type="SaVarSimple" nom="j"/>
+                    <rhs type="SaExpAdd">
+                     <op1 type="SaExpVar">
+                      <var type="SaVarSimple" nom="j"/>
+                     </op1>
+                     <op2 type="SaExpInt" val="1"/>
+                    </rhs>
+                   </tete>
+                  </queue>
+                 </val>
+                </faire>
+               </tete>
+               <queue type="SaLInst">
+                <tete type="SaInstAffect">
+                 <lhs type="SaVarSimple" nom="m"/>
+                 <rhs type="SaExpSub">
+                  <op1 type="SaExpVar">
+                   <var type="SaVarSimple" nom="m"/>
+                  </op1>
+                  <op2 type="SaExpInt" val="1"/>
+                 </rhs>
+                </tete>
+               </queue>
+              </queue>
+             </queue>
+            </val>
+           </faire>
+          </tete>
+         </queue>
+        </queue>
+       </val>
+      </corps>
+     </tete>
+     <queue type="SaLDec">
+      <tete type="SaDecFonc" nom="main">
+       <corps type="SaInstBloc">
+        <val type="SaLInst">
+         <tete type="SaAppel" nom="initialiser">
+         </tete>
+         <queue type="SaLInst">
+          <tete type="SaAppel" nom="afficher">
+           <arguments type="SaLExp">
+            <tete type="SaExpInt" val="10"/>
+           </arguments>
+          </tete>
+          <queue type="SaLInst">
+           <tete type="SaAppel" nom="trier">
+            <arguments type="SaLExp">
+             <tete type="SaExpInt" val="10"/>
+            </arguments>
+           </tete>
+           <queue type="SaLInst">
+            <tete type="SaAppel" nom="afficher">
+             <arguments type="SaLExp">
+              <tete type="SaExpInt" val="10"/>
+             </arguments>
+            </tete>
+           </queue>
+          </queue>
+         </queue>
+        </val>
+       </corps>
+      </tete>
+     </queue>
+    </queue>
+   </queue>
+  </queue>
+ </fonctions>
+</programme>

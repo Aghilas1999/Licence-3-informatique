@@ -1,0 +1,14 @@
+*\.sc
+*\.sa
+*\.saout
+*\.ts
+*\.c3a
+*\.c3aout
+*\.pre-nasm
+*\.fg
+*\.fgs
+*\.ig
+*\.nasm
+*\.exe
+*\.out
+*\.o

@@ -1,0 +1,4 @@
+main()
+{
+ecrire(var1);
+}

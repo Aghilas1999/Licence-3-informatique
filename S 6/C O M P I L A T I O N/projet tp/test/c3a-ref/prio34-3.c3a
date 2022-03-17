@@ -1,0 +1,7 @@
+	t0 = call main
+	stop t0
+main	fbegin	#entree fonction
+	t1 = 6 / 3
+	t2 = t1 - 72
+	write t2	
+	fend

@@ -1,0 +1,8 @@
+	t0 = call main
+	stop t0
+main	fbegin	#entree fonction
+	if 0 = 0 goto l0
+	write 1	
+	goto l1
+l0	write 0	
+l1	fend

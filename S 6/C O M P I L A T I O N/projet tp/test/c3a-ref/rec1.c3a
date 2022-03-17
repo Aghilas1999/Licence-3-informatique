@@ -1,0 +1,22 @@
+	t0 = call main
+	stop t0
+f	fbegin	#entree fonction
+	t1 = 1
+	if a = 1 goto l2
+	t1 = 0
+l2	if t1 = 0 goto l0
+	ret 1
+	fend
+	goto l1
+l0	t3 = a - 1
+	param t3
+	t2 = call f
+	t4 = 1 + t2
+	ret t4
+	fend
+l1	fend
+main	fbegin	#entree fonction
+	param 100
+	t5 = call f
+	write t5	
+	fend

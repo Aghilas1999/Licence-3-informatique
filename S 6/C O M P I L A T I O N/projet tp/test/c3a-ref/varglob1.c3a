@@ -1,0 +1,6 @@
+	t0 = call main
+	stop t0
+main	fbegin	#entree fonction
+	variable = 6834
+	write variable	
+	fend

@@ -1,0 +1,12 @@
+	t0 = call main
+	stop t0
+g	fbegin	#entree fonction
+	write 2	
+	fend
+f	fbegin	#entree fonction
+	write 1	
+	t1 = call g
+	fend
+main	fbegin	#entree fonction
+	t2 = call f
+	fend

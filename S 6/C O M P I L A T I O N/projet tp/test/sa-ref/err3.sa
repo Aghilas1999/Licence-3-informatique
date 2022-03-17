@@ -1,0 +1,23 @@
+<SaProg>
+ <SaLDec>
+  <SaDecFonc>
+   <nom>f</nom>
+   <SaLDec>
+    <SaDecVar>
+     <nom>a</nom>
+    </SaDecVar>
+   </SaLDec>
+  </SaDecFonc>
+  <SaLDec>
+   <SaDecFonc>
+    <nom>main</nom>
+    <SaInstBloc>
+     <SaLInst>
+      <SaAppel>
+      </SaAppel>
+     </SaLInst>
+    </SaInstBloc>
+   </SaDecFonc>
+  </SaLDec>
+ </SaLDec>
+</SaProg>

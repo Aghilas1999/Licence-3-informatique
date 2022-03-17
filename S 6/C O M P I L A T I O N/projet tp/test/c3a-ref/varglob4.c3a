@@ -1,0 +1,8 @@
+	t0 = call main
+	stop t0
+main	fbegin	#entree fonction
+	var1 = 10
+	var2 = 34
+	t1 = var1 + var2
+	write t1	
+	fend

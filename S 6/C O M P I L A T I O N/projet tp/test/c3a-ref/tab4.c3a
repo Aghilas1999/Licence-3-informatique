@@ -1,0 +1,11 @@
+	t0 = call main
+	stop t0
+main	fbegin	#entree fonction
+	tab[0] = 1
+	tab[tab[0]] = 12
+	t1 = tab[0] + 1
+	tab[t1] = 13
+	write tab[0]	
+	write tab[1]	
+	write tab[2]	
+	fend

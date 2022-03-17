@@ -1,0 +1,6 @@
+	t0 = call main
+	stop t0
+main	fbegin	#entree fonction
+	t1 = 0 * 321
+	write t1	
+	fend

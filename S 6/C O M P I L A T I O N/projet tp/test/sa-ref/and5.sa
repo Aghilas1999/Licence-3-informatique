@@ -1,0 +1,19 @@
+<programme type="SaProg">
+ <fonctions type="SaLDec">
+  <tete type="SaDecFonc" nom="main">
+   <corps type="SaInstBloc">
+    <val type="SaLInst">
+     <tete type="SaInstEcriture">
+      <arg type="SaExpAnd">
+       <op1 type="SaExpAnd">
+        <op1 type="SaExpInt" val="1"/>
+        <op2 type="SaExpInt" val="0"/>
+       </op1>
+       <op2 type="SaExpInt" val="1"/>
+      </arg>
+     </tete>
+    </val>
+   </corps>
+  </tete>
+ </fonctions>
+</programme>

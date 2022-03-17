@@ -1,0 +1,14 @@
+	t0 = call main
+	stop t0
+main	fbegin	#entree fonction
+	base = 2
+	t1 = base + 0
+	tab[t1] = 34
+	t2 = base + 1
+	tab[t2] = 74
+	t3 = base + 2
+	tab[t3] = 16
+	write tab[2]	
+	write tab[3]	
+	write tab[4]	
+	fend

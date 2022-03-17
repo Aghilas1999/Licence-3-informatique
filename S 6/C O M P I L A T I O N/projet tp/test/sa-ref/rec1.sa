@@ -1,0 +1,66 @@
+<programme type="SaProg">
+ <fonctions type="SaLDec">
+  <tete type="SaDecFonc" nom="f">
+   <parametres type="SaLDec">
+    <tete type="SaDecVar" nom="a"/>
+   </parametres>
+   <corps type="SaInstBloc">
+    <val type="SaLInst">
+     <tete type="SaInstSi">
+      <test type="SaExpEqual">
+       <op1 type="SaExpVar">
+        <var type="SaVarSimple" nom="a"/>
+       </op1>
+       <op2 type="SaExpInt" val="1"/>
+      </test>
+      <alors type="SaInstBloc">
+       <val type="SaLInst">
+        <tete type="SaInstRetour">
+         <val type="SaExpInt" val="1"/>
+        </tete>
+       </val>
+      </alors>
+      <sinon type="SaInstBloc">
+       <val type="SaLInst">
+        <tete type="SaInstRetour">
+         <val type="SaExpAdd">
+          <op1 type="SaExpInt" val="1"/>
+          <op2 type="SaExpAppel">
+           <val type="SaAppel" nom="f">
+            <arguments type="SaLExp">
+             <tete type="SaExpSub">
+              <op1 type="SaExpVar">
+               <var type="SaVarSimple" nom="a"/>
+              </op1>
+              <op2 type="SaExpInt" val="1"/>
+             </tete>
+            </arguments>
+           </val>
+          </op2>
+         </val>
+        </tete>
+       </val>
+      </sinon>
+     </tete>
+    </val>
+   </corps>
+  </tete>
+  <queue type="SaLDec">
+   <tete type="SaDecFonc" nom="main">
+    <corps type="SaInstBloc">
+     <val type="SaLInst">
+      <tete type="SaInstEcriture">
+       <arg type="SaExpAppel">
+        <val type="SaAppel" nom="f">
+         <arguments type="SaLExp">
+          <tete type="SaExpInt" val="100"/>
+         </arguments>
+        </val>
+       </arg>
+      </tete>
+     </val>
+    </corps>
+   </tete>
+  </queue>
+ </fonctions>
+</programme>

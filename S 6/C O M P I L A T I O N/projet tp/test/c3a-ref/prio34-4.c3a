@@ -1,0 +1,7 @@
+	t0 = call main
+	stop t0
+main	fbegin	#entree fonction
+	t1 = 20 / 10
+	t2 = 6 + t1
+	write t2	
+	fend
