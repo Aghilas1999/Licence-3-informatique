@@ -1,0 +1,50 @@
+<div class="row">
+  <div class="col-xs-12">
+    <img [src]="recipe.imagePath" class="img-fluid" alt="{{recipe.nom}}"
+      style="height: 300px; width: 300px; padding-top: 10px;">
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <h1>{{recipe.nom}}</h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    {{recipe.description}}
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <div class="btn-group">
+      <ul ngbDropdown class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" ngbDropdownToggle id="dropdownMenuButton1"
+          aria-expanded="false">
+          Gérer la recette
+        </button>
+        <ul ngbDropdownMenu aria-labelledby="dropdownMenuButton1">
+          <li><a ngbDropdownItem style="cursor: pointer" (click)="onAjoutalaliste()">Ajouter des ingrédients aux achats</a>
+          </li>
+          <li><a ngbDropdownItem (click)="onModifierRecette()">Modifier la recette</a></li>
+          <li><a ngbDropdownItem (click)="onSupprimeRecette()">Supprimer la recette</a></li>
+        </ul>
+      </ul>
+    </div>
+
+  </div>
+</div>
+<div class="row" style="padding-bottom: 10px;">
+  <p style="text-decoration: underline;">Préparation et Cuisson:</p>
+  <ul class="col-xs-12">
+    {{recipe.instructions }}
+  </ul>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let ingredient of recipe.ingredients">
+        {{ingredient.name}} - ({{ingredient.amount}} {{ingredient.uom}})
+      </li>
+    </ul>
+  </div>
+</div>
