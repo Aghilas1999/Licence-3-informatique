@@ -1,0 +1,36 @@
+{
+  "members": [
+    {
+      "password": "TEST",
+      "SUBSCRIBERS": [],
+      "id": 0,
+      "username": "TEST"
+    },
+    {
+      "password": "walid2012*",
+      "SUBSCRIBERS": [],
+      "id": 1,
+      "username": "WALID_ADDC"
+    },
+    {
+      "password": "walid",
+      "SUBSCRIBERS": [],
+      "id": 2,
+      "username": "WALID"
+    },
+    {
+      "password": "nabil",
+      "SUBSCRIBERS": [],
+      "id": 3,
+      "username": "NABIL"
+    },
+    {
+      "password": "hey",
+      "SUBSCRIBERS": [
+        2
+      ],
+      "id": 4,
+      "username": "HEY"
+    }
+  ]
+}
