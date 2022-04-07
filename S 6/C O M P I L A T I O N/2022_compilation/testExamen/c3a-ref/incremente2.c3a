@@ -1,0 +1,8 @@
+	t0 = call main
+	stop t0
+main	fbegin	#entree fonction
+	v = 8
+	t1 = v + v
+	v = t1
+	write v	
+	fend

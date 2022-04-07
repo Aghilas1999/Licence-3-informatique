@@ -1,0 +1,36 @@
+0 : ( 4 )		call	main	;
+1 : ( 2 )		mov	ebx,	0	; valeur de retour du programme
+2 : ( 3 )		mov	eax,	1	;
+3 : ( 4 )		int 0x80	;
+4 : ( 5 )	main :	push	ebp	;sauvegarde la valeur de ebp
+5 : ( 6 )		mov	ebp,	esp	;nouvelle valeur de ebp
+6 : ( 7 )		sub	esp,	8	;allocation des variables locales
+7 : ( 8 )		mov	dword [ebp-4*1],	0	;Affect
+8 : ( 9 )	l0 :	mov	r0,	1	;Affect
+9 : ( 10 )		cmp	dword [ebp-4*1],	4	;JumpIfLess 1
+10 : ( 11 12 )		jl	l2	;JumpIfLess 2
+11 : ( 12 )		mov	r0,	0	;Affect
+12 : ( 13 )	l2 :	cmp	r0,	0	;JumpIfEqual 1
+13 : ( 14 33 )		je	l1	;JumpIfEqual 2
+14 : ( 15 )		mov	dword [ebp-4*2],	0	;Affect
+15 : ( 16 )	l3 :	mov	r1,	1	;Affect
+16 : ( 17 )		cmp	dword [ebp-4*2],	4	;JumpIfLess 1
+17 : ( 18 19 )		jl	l5	;JumpIfLess 2
+18 : ( 19 )		mov	r1,	0	;Affect
+19 : ( 20 )	l5 :	cmp	r1,	0	;JumpIfEqual 1
+20 : ( 21 29 )		je	l4	;JumpIfEqual 2
+21 : ( 22 )		mov	eax,	dword [ebp-4*1]	;Write 1
+22 : ( )		call	iprintLF	;Write 2
+23 : ( 24 )		mov	eax,	dword [ebp-4*2]	;Write 1
+24 : ( )		call	iprintLF	;Write 2
+25 : ( 26 )		mov	r2,	dword [ebp-4*2]	;
+26 : ( 27 )		add	r2,	1	;
+27 : ( 28 )		mov	dword [ebp-4*2],	r2	;Affect
+28 : ( 15 )		jmp	l3	;Jump
+29 : ( 30 )	l4 :	mov	r3,	dword [ebp-4*1]	;
+30 : ( 31 )		add	r3,	1	;
+31 : ( 32 )		mov	dword [ebp-4*1],	r3	;Affect
+32 : ( 8 )		jmp	l0	;Jump
+33 : ( 34 )	l1 :	add	esp,	8	;désallocation des variables locales
+34 : ( 35 )		pop	ebp	;restaure la valeur de ebp
+35 : ( )		ret	;

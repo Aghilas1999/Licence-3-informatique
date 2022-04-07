@@ -1,0 +1,27 @@
+iter num = 3
+use = () def = ()	in = ()	 	out = ()	 		sub	esp,	4	;allocation mémoire pour la valeur de retour
+use = () def = ()	in = ()	 	out = ()	 		call	main	;
+use = () def = (0 )	in = ()	 	out = ()	 		pop	r0	;récupération de la valeur de retour
+use = () def = (2 )	in = ()	 	out = ()	 		mov	ebx,	0	; valeur de retour du programme
+use = () def = (3 )	in = ()	 	out = ()	 		mov	eax,	1	; code de sortie
+use = () def = ()	in = ()	 	out = ()	 		int 0x80	;
+use = () def = ()	in = ()	 	out = ()	 	main :	push	ebp	;sauvegarde la valeur de ebp
+use = () def = ()	in = ()	 	out = ()	 		mov	ebp,	esp	;nouvelle valeur de ebp
+use = () def = ()	in = ()	 	out = ()	 		push	eax	;sauvegarde de eax
+use = () def = ()	in = ()	 	out = ()	 		push	ebx	;sauvegarde de ebx
+use = () def = ()	in = ()	 	out = ()	 		push	ecx	;sauvegarde de ecx
+use = () def = ()	in = ()	 	out = ()	 		push	edx	;sauvegarde de edx
+use = () def = ()	in = ()	 	out = ()	 		sub	esp,	16	;allocation des variables locales
+use = () def = ()	in = ()	 	out = ()	 		mov	dword [ebp-4],	8	;Affect
+use = () def = (1 )	in = ()	 	out = (1 )	 		mov	r1,	dword [ebp-4]	;
+use = (1 ) def = (1 )	in = (1 )	 	out = (1 )	 		add	r1,	dword [ebp-4]	;
+use = (1 ) def = ()	in = (1 )	 	out = ()	 		mov	dword [ebp-4],	r1	;Affect
+use = () def = (8 )	in = ()	 	out = ()	 		mov	eax,	dword [ebp-4]	;Write 1
+use = () def = ()	in = ()	 	out = ()	 		call	iprintLF	;Write 2
+use = () def = ()	in = ()	 	out = ()	 		add	esp,	16	;désallocation des variables locales
+use = () def = (9 )	in = ()	 	out = ()	 		pop	edx	;restaure edx
+use = () def = (10 )	in = ()	 	out = ()	 		pop	ecx	;restaure ecx
+use = () def = (11 )	in = ()	 	out = ()	 		pop	ebx	;restaure ebx
+use = () def = (12 )	in = ()	 	out = ()	 		pop	eax	;restaure eax
+use = () def = ()	in = ()	 	out = ()	 		pop	ebp	;restaure la valeur de ebp
+use = () def = ()	in = ()	 	out = ()	 		ret	;

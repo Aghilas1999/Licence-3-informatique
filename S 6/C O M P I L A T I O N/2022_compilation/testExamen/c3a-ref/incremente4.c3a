@@ -1,0 +1,8 @@
+	t0 = call main
+	stop t0
+main	fbegin	#entree fonction
+	tab[2] = 2
+	t1 = tab[2] + 4
+	tab[2] = t1
+	write tab[2]	
+	fend

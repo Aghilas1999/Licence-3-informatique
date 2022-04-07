@@ -1,0 +1,13 @@
+0 : ( 4 )		call	main	;
+1 : ( 2 )		mov	ebx,	0	; valeur de retour du programme
+2 : ( 3 )		mov	eax,	1	;
+3 : ( 4 )		int 0x80	;
+4 : ( 5 )	main :	push	ebp	;sauvegarde la valeur de ebp
+5 : ( 6 )		mov	ebp,	esp	;nouvelle valeur de ebp
+6 : ( 7 )		sub	esp,	4	;allocation des variables locales
+7 : ( 8 )		mov	dword [ebp-4*1],	1	;Affect
+8 : ( 9 )		mov	eax,	dword [ebp-4*1]	;Write 1
+9 : ( )		call	iprintLF	;Write 2
+10 : ( 11 )		add	esp,	4	;désallocation des variables locales
+11 : ( 12 )		pop	ebp	;restaure la valeur de ebp
+12 : ( )		ret	;

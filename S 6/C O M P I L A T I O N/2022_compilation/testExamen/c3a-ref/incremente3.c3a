@@ -1,0 +1,10 @@
+	t0 = call main
+	stop t0
+main	fbegin	#entree fonction
+	v = 1
+	t1 = 12 * v
+	t2 = t1 / 12
+	t3 = v + t2
+	v = t3
+	write v	
+	fend

@@ -1,0 +1,14 @@
+rm *.c3a
+rm *.c3aout
+rm *.exe
+rm *.fg
+rm *.fgs
+rm *.ig
+rm *.nasm
+rm *.o
+rm *.out
+rm *.pre-nasm
+rm *.sa
+rm *.saout
+rm *.sc
+rm *.ts

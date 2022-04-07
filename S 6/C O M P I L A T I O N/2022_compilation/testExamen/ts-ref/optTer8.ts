@@ -1,0 +1,4 @@
+TABLE GLOBALE
+tab	VAR  	8	0
+main	FCT	0
+TABLE LOCALE : main

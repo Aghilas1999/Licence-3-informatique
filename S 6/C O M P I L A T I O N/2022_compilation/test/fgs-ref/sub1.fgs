@@ -1,0 +1,15 @@
+iter num = 3
+use = () def = ()	in = ()	 	out = ()	 		call	main	;
+use = () def = (1 )	in = ()	 	out = ()	 		mov	ebx,	0	; valeur de retour du programme
+use = () def = (2 )	in = ()	 	out = ()	 		mov	eax,	1	;
+use = () def = ()	in = ()	 	out = ()	 		int 0x80	;
+use = () def = ()	in = ()	 	out = ()	 	main :	push	ebp	;sauvegarde la valeur de ebp
+use = () def = ()	in = ()	 	out = ()	 		mov	ebp,	esp	;nouvelle valeur de ebp
+use = () def = ()	in = ()	 	out = ()	 		sub	esp,	0	;allocation des variables locales
+use = () def = (0 )	in = ()	 	out = (0 )	 		mov	r0,	10	;
+use = (0 ) def = (0 )	in = (0 )	 	out = (0 )	 		sub	r0,	5	;
+use = (0 ) def = (3 )	in = (0 )	 	out = ()	 		mov	eax,	r0	;Write 1
+use = () def = ()	in = ()	 	out = ()	 		call	iprintLF	;Write 2
+use = () def = ()	in = ()	 	out = ()	 		add	esp,	0	;désallocation des variables locales
+use = () def = ()	in = ()	 	out = ()	 		pop	ebp	;restaure la valeur de ebp
+use = () def = ()	in = ()	 	out = ()	 		ret	;

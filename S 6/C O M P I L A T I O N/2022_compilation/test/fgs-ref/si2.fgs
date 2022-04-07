@@ -1,0 +1,19 @@
+iter num = 3
+use = () def = ()	in = ()	 	out = ()	 		call	main	;
+use = () def = (0 )	in = ()	 	out = ()	 		mov	ebx,	0	; valeur de retour du programme
+use = () def = (1 )	in = ()	 	out = ()	 		mov	eax,	1	;
+use = () def = ()	in = ()	 	out = ()	 		int 0x80	;
+use = () def = ()	in = ()	 	out = ()	 	main :	push	ebp	;sauvegarde la valeur de ebp
+use = () def = ()	in = ()	 	out = ()	 		mov	ebp,	esp	;nouvelle valeur de ebp
+use = () def = ()	in = ()	 	out = ()	 		sub	esp,	0	;allocation des variables locales
+use = () def = (2 )	in = ()	 	out = (2 )	 		mov	r2,	0	;JumpIfEqual 1
+use = (2 ) def = ()	in = (2 )	 	out = ()	 		cmp	r2,	0	;on passe par un registre temporaire
+use = () def = ()	in = ()	 	out = ()	 		je	l0	;JumpIfEqual 2
+use = () def = (3 )	in = ()	 	out = ()	 		mov	eax,	1	;Write 1
+use = () def = ()	in = ()	 	out = ()	 		call	iprintLF	;Write 2
+use = () def = ()	in = ()	 	out = ()	 		jmp	l1	;Jump
+use = () def = (4 )	in = ()	 	out = ()	 	l0 :	mov	eax,	0	;Write 1
+use = () def = ()	in = ()	 	out = ()	 		call	iprintLF	;Write 2
+use = () def = ()	in = ()	 	out = ()	 	l1 :	add	esp,	0	;désallocation des variables locales
+use = () def = ()	in = ()	 	out = ()	 		pop	ebp	;restaure la valeur de ebp
+use = () def = ()	in = ()	 	out = ()	 		ret	;

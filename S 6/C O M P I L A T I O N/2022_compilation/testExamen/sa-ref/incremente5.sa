@@ -1,0 +1,41 @@
+<programme type="SaProg">
+ <variables type="SaLDec">
+  <tete type="SaDecTab" nom="tab" taille="10">
+  </tete>
+ </variables>
+ <fonctions type="SaLDec">
+  <tete type="SaDecFonc" nom="main">
+   <corps type="SaInstBloc">
+    <val type="SaLInst">
+     <tete type="SaInstAffect">
+      <lhs type="SaVarIndicee" nom="tab">
+       <indice type="SaExpInt" val="2"/>
+      </lhs>
+      <rhs type="SaExpInt" val="2"/>
+     </tete>
+     <queue type="SaLInst">
+      <tete type="SaInstIncremente">
+       <lhs type="SaVarIndicee" nom="tab">
+        <indice type="SaExpInt" val="2"/>
+       </lhs>
+       <rhs type="SaExpVar">
+        <var type="SaVarIndicee" nom="tab">
+         <indice type="SaExpInt" val="2"/>
+        </var>
+       </rhs>
+      </tete>
+      <queue type="SaLInst">
+       <tete type="SaInstEcriture">
+        <arg type="SaExpVar">
+         <var type="SaVarIndicee" nom="tab">
+          <indice type="SaExpInt" val="2"/>
+         </var>
+        </arg>
+       </tete>
+      </queue>
+     </queue>
+    </val>
+   </corps>
+  </tete>
+ </fonctions>
+</programme>

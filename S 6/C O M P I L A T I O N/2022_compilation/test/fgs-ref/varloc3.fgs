@@ -1,0 +1,17 @@
+iter num = 1
+use = () def = ()	in = ()	 	out = ()	 		call	main	;
+use = () def = (0 )	in = ()	 	out = ()	 		mov	ebx,	0	; valeur de retour du programme
+use = () def = (1 )	in = ()	 	out = ()	 		mov	eax,	1	;
+use = () def = ()	in = ()	 	out = ()	 		int 0x80	;
+use = () def = ()	in = ()	 	out = ()	 	main :	push	ebp	;sauvegarde la valeur de ebp
+use = () def = ()	in = ()	 	out = ()	 		mov	ebp,	esp	;nouvelle valeur de ebp
+use = () def = ()	in = ()	 	out = ()	 		sub	esp,	8	;allocation des variables locales
+use = () def = ()	in = ()	 	out = ()	 		mov	dword [ebp-4*1],	10	;Affect
+use = () def = ()	in = ()	 	out = ()	 		mov	dword [ebp-4*2],	30	;Affect
+use = () def = (2 )	in = ()	 	out = ()	 		mov	eax,	dword [ebp-4*1]	;Write 1
+use = () def = ()	in = ()	 	out = ()	 		call	iprintLF	;Write 2
+use = () def = (3 )	in = ()	 	out = ()	 		mov	eax,	dword [ebp-4*2]	;Write 1
+use = () def = ()	in = ()	 	out = ()	 		call	iprintLF	;Write 2
+use = () def = ()	in = ()	 	out = ()	 		add	esp,	8	;désallocation des variables locales
+use = () def = ()	in = ()	 	out = ()	 		pop	ebp	;restaure la valeur de ebp
+use = () def = ()	in = ()	 	out = ()	 		ret	;

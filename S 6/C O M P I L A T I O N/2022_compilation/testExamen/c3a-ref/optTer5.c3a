@@ -1,0 +1,14 @@
+	t0 = call main
+	stop t0
+main	fbegin	#entree fonction
+	t2 = 1 + 2
+	t3 = 1 * 3
+	t1 = 1
+	if t2 < t3 goto l2
+	t1 = 0
+l2	if t1 = 0 goto l1
+	t4 = 1
+	goto l0
+l1	t4 = 0
+l0	write t4	
+	fend

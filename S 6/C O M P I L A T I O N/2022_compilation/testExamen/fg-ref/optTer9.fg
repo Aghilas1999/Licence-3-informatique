@@ -1,0 +1,65 @@
+0 : ( 1 )		sub	esp,	4	;allocation mémoire pour la valeur de retour
+1 : ( 2 )		call	main	;
+2 : ( 3 )		pop	r0	;récupération de la valeur de retour
+3 : ( 4 )		mov	ebx,	0	; valeur de retour du programme
+4 : ( 5 )		mov	eax,	1	; code de sortie
+5 : ( 6 )		int 0x80	;
+6 : ( 7 )	f :	push	ebp	;sauvegarde la valeur de ebp
+7 : ( 8 )		mov	ebp,	esp	;nouvelle valeur de ebp
+8 : ( 9 )		push	eax	;sauvegarde de eax
+9 : ( 10 )		push	ebx	;sauvegarde de ebx
+10 : ( 11 )		push	ecx	;sauvegarde de ecx
+11 : ( 12 )		push	edx	;sauvegarde de edx
+12 : ( 13 )		sub	esp,	0	;allocation des variables locales
+13 : ( 14 )		mov	r1,	dword [ebp+20]	;
+14 : ( 15 )		add	r1,	dword [ebp+16]	;
+15 : ( 16 )		mov	r2,	r1	;
+16 : ( 17 )		add	r2,	dword [ebp+12]	;
+17 : ( 18 )		mov	dword [ebp+8],	r2	;ecriture de la valeur de retour
+18 : ( 19 )		add	esp,	0	;désallocation des variables locales
+19 : ( 20 )		pop	edx	;restaure edx
+20 : ( 21 )		pop	ecx	;restaure ecx
+21 : ( 22 )		pop	ebx	;restaure ebx
+22 : ( 23 )		pop	eax	;restaure eax
+23 : ( 24 )		pop	ebp	;restaure la valeur de ebp
+24 : ( )		ret	;
+25 : ( 26 )		add	esp,	0	;désallocation des variables locales
+26 : ( 27 )		pop	edx	;restaure edx
+27 : ( 28 )		pop	ecx	;restaure ecx
+28 : ( 29 )		pop	ebx	;restaure ebx
+29 : ( 30 )		pop	eax	;restaure eax
+30 : ( 31 )		pop	ebp	;restaure la valeur de ebp
+31 : ( )		ret	;
+32 : ( 33 )	main :	push	ebp	;sauvegarde la valeur de ebp
+33 : ( 34 )		mov	ebp,	esp	;nouvelle valeur de ebp
+34 : ( 35 )		push	eax	;sauvegarde de eax
+35 : ( 36 )		push	ebx	;sauvegarde de ebx
+36 : ( 37 )		push	ecx	;sauvegarde de ecx
+37 : ( 38 )		push	edx	;sauvegarde de edx
+38 : ( 39 )		sub	esp,	0	;allocation des variables locales
+39 : ( 40 )		push	1	;Param
+40 : ( 41 )		mov	r4,	1	;Affect
+41 : ( 42 )		mov	r24,	1	;JumpIfEqual 1
+42 : ( 43 )		cmp	r24,	0	;on passe par un registre temporaire
+43 : ( 44 45 )		je	l2	;JumpIfEqual 2
+44 : ( 45 )		mov	r4,	0	;Affect
+45 : ( 46 )	l2 :	cmp	r4,	0	;JumpIfEqual 1
+46 : ( 47 49 )		je	l1	;JumpIfEqual 2
+47 : ( 48 )		mov	r5,	1	;Affect
+48 : ( 50 )		jmp	l0	;Jump
+49 : ( 50 )	l1 :	mov	r5,	2	;Affect
+50 : ( 51 )	l0 :	push	r5	;Param
+51 : ( 52 )		push	3	;Param
+52 : ( 53 )		sub	esp,	4	;allocation mémoire pour la valeur de retour
+53 : ( 54 )		call	f	;
+54 : ( 55 )		pop	r3	;récupération de la valeur de retour
+55 : ( 56 )		add	esp,	12	;désallocation des arguments
+56 : ( 57 )		mov	eax,	r3	;Write 1
+57 : ( 58 )		call	iprintLF	;Write 2
+58 : ( 59 )		add	esp,	0	;désallocation des variables locales
+59 : ( 60 )		pop	edx	;restaure edx
+60 : ( 61 )		pop	ecx	;restaure ecx
+61 : ( 62 )		pop	ebx	;restaure ebx
+62 : ( 63 )		pop	eax	;restaure eax
+63 : ( 64 )		pop	ebp	;restaure la valeur de ebp
+64 : ( )		ret	;

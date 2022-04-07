@@ -1,0 +1,26 @@
+0 : ( 1 )		sub	esp,	4	;allocation mémoire pour la valeur de retour
+1 : ( 2 )		call	main	;
+2 : ( 3 )		pop	r0	;récupération de la valeur de retour
+3 : ( 4 )		mov	ebx,	0	; valeur de retour du programme
+4 : ( 5 )		mov	eax,	1	; code de sortie
+5 : ( 6 )		int 0x80	;
+6 : ( 7 )	main :	push	ebp	;sauvegarde la valeur de ebp
+7 : ( 8 )		mov	ebp,	esp	;nouvelle valeur de ebp
+8 : ( 9 )		push	eax	;sauvegarde de eax
+9 : ( 10 )		push	ebx	;sauvegarde de ebx
+10 : ( 11 )		push	ecx	;sauvegarde de ecx
+11 : ( 12 )		push	edx	;sauvegarde de edx
+12 : ( 13 )		sub	esp,	16	;allocation des variables locales
+13 : ( 14 )		mov	dword [ebp-4],	8	;Affect
+14 : ( 15 )		mov	r1,	dword [ebp-4]	;
+15 : ( 16 )		add	r1,	dword [ebp-4]	;
+16 : ( 17 )		mov	dword [ebp-4],	r1	;Affect
+17 : ( 18 )		mov	eax,	dword [ebp-4]	;Write 1
+18 : ( 19 )		call	iprintLF	;Write 2
+19 : ( 20 )		add	esp,	16	;désallocation des variables locales
+20 : ( 21 )		pop	edx	;restaure edx
+21 : ( 22 )		pop	ecx	;restaure ecx
+22 : ( 23 )		pop	ebx	;restaure ebx
+23 : ( 24 )		pop	eax	;restaure eax
+24 : ( 25 )		pop	ebp	;restaure la valeur de ebp
+25 : ( )		ret	;

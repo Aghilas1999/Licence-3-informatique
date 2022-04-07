@@ -1,0 +1,14 @@
+	t0 = call main
+	stop t0
+main	fbegin	#entree fonction
+	tab[0] = 12
+	tab[1] = 42
+	t1 = 1
+	if 1 = 0 goto l2
+	t1 = 0
+l2	if t1 = 0 goto l1
+	t2 = 0
+	goto l0
+l1	t2 = 1
+l0	write tab[t2]	
+	fend

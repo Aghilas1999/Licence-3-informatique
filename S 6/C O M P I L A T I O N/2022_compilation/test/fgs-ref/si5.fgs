@@ -1,0 +1,33 @@
+iter num = 3
+use = () def = ()	in = ()	 	out = ()	 		sub	esp,	4	;allocation mémoire pour la valeur de retour
+use = () def = ()	in = ()	 	out = ()	 		call	main	;
+use = () def = (0 )	in = ()	 	out = ()	 		pop	r0	;récupération de la valeur de retour
+use = () def = (1 )	in = ()	 	out = ()	 		mov	ebx,	0	; valeur de retour du programme
+use = () def = (2 )	in = ()	 	out = ()	 		mov	eax,	1	; code de sortie
+use = () def = ()	in = ()	 	out = ()	 		int 0x80	;
+use = () def = ()	in = ()	 	out = ()	 	main :	push	ebp	;sauvegarde la valeur de ebp
+use = () def = ()	in = ()	 	out = ()	 		mov	ebp,	esp	;nouvelle valeur de ebp
+use = () def = ()	in = ()	 	out = ()	 		push	eax	;sauvegarde de eax
+use = () def = ()	in = ()	 	out = ()	 		push	ebx	;sauvegarde de ebx
+use = () def = ()	in = ()	 	out = ()	 		push	ecx	;sauvegarde de ecx
+use = () def = ()	in = ()	 	out = ()	 		push	edx	;sauvegarde de edx
+use = () def = ()	in = ()	 	out = ()	 		sub	esp,	0	;allocation des variables locales
+use = () def = (7 )	in = ()	 	out = (7 )	 		mov	r7,	1	;JumpIfEqual 1
+use = (7 ) def = ()	in = (7 )	 	out = ()	 		cmp	r7,	0	;on passe par un registre temporaire
+use = () def = ()	in = ()	 	out = ()	 		je	l3	;JumpIfEqual 2
+use = () def = (8 )	in = ()	 	out = ()	 		mov	eax,	1	;Write 1
+use = () def = ()	in = ()	 	out = ()	 		call	iprintLF	;Write 2
+use = () def = (9 )	in = ()	 	out = (9 )	 		mov	r9,	1	;JumpIfEqual 1
+use = (9 ) def = ()	in = (9 )	 	out = ()	 		cmp	r9,	0	;on passe par un registre temporaire
+use = () def = ()	in = ()	 	out = ()	 		je	l3	;JumpIfEqual 2
+use = () def = (10 )	in = ()	 	out = ()	 		mov	eax,	2	;Write 1
+use = () def = ()	in = ()	 	out = ()	 		call	iprintLF	;Write 2
+use = () def = (11 )	in = ()	 	out = ()	 	l3 :	mov	eax,	3	;Write 1
+use = () def = ()	in = ()	 	out = ()	 		call	iprintLF	;Write 2
+use = () def = ()	in = ()	 	out = ()	 		add	esp,	0	;désallocation des variables locales
+use = () def = (12 )	in = ()	 	out = ()	 		pop	edx	;restaure edx
+use = () def = (13 )	in = ()	 	out = ()	 		pop	ecx	;restaure ecx
+use = () def = (14 )	in = ()	 	out = ()	 		pop	ebx	;restaure ebx
+use = () def = (15 )	in = ()	 	out = ()	 		pop	eax	;restaure eax
+use = () def = ()	in = ()	 	out = ()	 		pop	ebp	;restaure la valeur de ebp
+use = () def = ()	in = ()	 	out = ()	 		ret	;

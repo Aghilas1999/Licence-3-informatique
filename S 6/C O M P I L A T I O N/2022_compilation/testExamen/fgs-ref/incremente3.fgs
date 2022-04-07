@@ -1,0 +1,33 @@
+iter num = 40
+use = () def = ()	in = (12 )	 	out = (12 )	 		sub	esp,	4	;allocation mémoire pour la valeur de retour
+use = () def = ()	in = (12 )	 	out = (12 )	 		call	main	;
+use = () def = (0 )	in = (12 )	 	out = (12 )	 		pop	r0	;récupération de la valeur de retour
+use = () def = (4 )	in = (12 )	 	out = (12 )	 		mov	ebx,	0	; valeur de retour du programme
+use = () def = (5 )	in = (12 )	 	out = (12 )	 		mov	eax,	1	; code de sortie
+use = () def = ()	in = (12 )	 	out = (12 )	 		int 0x80	;
+use = () def = ()	in = (12 )	 	out = (12 )	 	main :	push	ebp	;sauvegarde la valeur de ebp
+use = () def = ()	in = (12 )	 	out = (12 )	 		mov	ebp,	esp	;nouvelle valeur de ebp
+use = () def = ()	in = (12 )	 	out = (12 )	 		push	eax	;sauvegarde de eax
+use = () def = ()	in = (12 )	 	out = (12 )	 		push	ebx	;sauvegarde de ebx
+use = () def = ()	in = (12 )	 	out = (12 )	 		push	ecx	;sauvegarde de ecx
+use = () def = ()	in = (12 )	 	out = (12 )	 		push	edx	;sauvegarde de edx
+use = () def = ()	in = (12 )	 	out = (12 )	 		sub	esp,	16	;allocation des variables locales
+use = () def = ()	in = (12 )	 	out = (12 )	 		mov	dword [ebp-4],	1	;Affect
+use = () def = (1 )	in = (12 )	 	out = (1 12 )	 		mov	r1,	12	;
+use = (1 ) def = (1 )	in = (1 12 )	 	out = (1 12 )	 		imul	r1,	dword [ebp-4]	;
+use = (1 ) def = (10 )	in = (1 12 )	 	out = (12 )	 		mov	eax,	r1	;
+use = () def = (11 )	in = (12 )	 	out = (11 12 )	 		mov	r11,	12	;
+use = (11 ) def = ()	in = (11 12 )	 	out = (12 )	 		idiv	r11	;
+use = (12 ) def = (2 )	in = (12 )	 	out = (2 )	 		mov	r2,	eax	;
+use = () def = (3 )	in = (2 )	 	out = (2 3 )	 		mov	r3,	dword [ebp-4]	;
+use = (2 3 ) def = (3 )	in = (2 3 )	 	out = (3 )	 		add	r3,	r2	;
+use = (3 ) def = ()	in = (3 )	 	out = ()	 		mov	dword [ebp-4],	r3	;Affect
+use = () def = (13 )	in = ()	 	out = ()	 		mov	eax,	dword [ebp-4]	;Write 1
+use = () def = ()	in = ()	 	out = ()	 		call	iprintLF	;Write 2
+use = () def = ()	in = ()	 	out = ()	 		add	esp,	16	;désallocation des variables locales
+use = () def = (14 )	in = ()	 	out = ()	 		pop	edx	;restaure edx
+use = () def = (15 )	in = ()	 	out = ()	 		pop	ecx	;restaure ecx
+use = () def = (16 )	in = ()	 	out = ()	 		pop	ebx	;restaure ebx
+use = () def = (17 )	in = ()	 	out = ()	 		pop	eax	;restaure eax
+use = () def = ()	in = ()	 	out = ()	 		pop	ebp	;restaure la valeur de ebp
+use = () def = ()	in = ()	 	out = ()	 		ret	;

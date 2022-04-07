@@ -1,0 +1,26 @@
+iter num = 3
+use = () def = ()	in = ()	 	out = ()	 		call	main	;
+use = () def = (0 )	in = ()	 	out = ()	 		mov	ebx,	0	; valeur de retour du programme
+use = () def = (1 )	in = ()	 	out = ()	 		mov	eax,	1	;
+use = () def = ()	in = ()	 	out = ()	 		int 0x80	;
+use = () def = ()	in = ()	 	out = ()	 	main :	push	ebp	;sauvegarde la valeur de ebp
+use = () def = ()	in = ()	 	out = ()	 		mov	ebp,	esp	;nouvelle valeur de ebp
+use = () def = ()	in = ()	 	out = ()	 		sub	esp,	0	;allocation des variables locales
+use = () def = (2 )	in = ()	 	out = (2 )	 		mov	r2,	0	;
+use = (2 ) def = ()	in = (2 )	 	out = ()	 		mov	dword [tab+4*r2],	0	;Affect
+use = () def = (3 )	in = ()	 	out = (3 )	 		mov	r3,	1	;
+use = (3 ) def = ()	in = (3 )	 	out = ()	 		mov	dword [tab+4*r3],	1	;Affect
+use = () def = (4 )	in = ()	 	out = (4 )	 		mov	r4,	2	;
+use = (4 ) def = ()	in = (4 )	 	out = ()	 		mov	dword [tab+4*r4],	2	;Affect
+use = () def = (6 )	in = ()	 	out = (6 )	 		mov	r6,	0	;
+use = (6 ) def = (5 )	in = (6 )	 	out = ()	 		mov	eax,	dword [tab+4*r6]	;Write 1
+use = () def = ()	in = ()	 	out = ()	 		call	iprintLF	;Write 2
+use = () def = (8 )	in = ()	 	out = (8 )	 		mov	r8,	1	;
+use = (8 ) def = (7 )	in = (8 )	 	out = ()	 		mov	eax,	dword [tab+4*r8]	;Write 1
+use = () def = ()	in = ()	 	out = ()	 		call	iprintLF	;Write 2
+use = () def = (10 )	in = ()	 	out = (10 )	 		mov	r10,	2	;
+use = (10 ) def = (9 )	in = (10 )	 	out = ()	 		mov	eax,	dword [tab+4*r10]	;Write 1
+use = () def = ()	in = ()	 	out = ()	 		call	iprintLF	;Write 2
+use = () def = ()	in = ()	 	out = ()	 		add	esp,	0	;désallocation des variables locales
+use = () def = ()	in = ()	 	out = ()	 		pop	ebp	;restaure la valeur de ebp
+use = () def = ()	in = ()	 	out = ()	 		ret	;
